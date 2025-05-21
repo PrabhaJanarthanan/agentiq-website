@@ -1,0 +1,89 @@
+name: agentiqthingswebsite
+description: "A new Flutter project."
+
+publish_to: 'none' 
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  #utility
+  http: 
+  intl:
+  
+ 
+  
+
+  #icons
+  cupertino_icons: ^1.0.8
+  iconsax:
+
+  #statemgmt
+  get:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^5.0.0
+  auto_size_text: ^3.0.0
+
+
+flutter:
+
+  
+  uses-material-design: true
+
+  assets:
+   - assets/logo/
+   - assets/icons/
+   - assets/images/
+
+
+
+  fonts:
+  - family: Poppins
+    fonts:
+      - asset: assets/fonts/Poppins-Bold.ttf
+        weight: 800
+      - asset: assets/fonts/Poppins-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/Poppins-BoldItalic.ttf
+      - asset: assets/fonts/Poppins-Medium.ttf
+      - asset: assets/fonts/Poppins-MediumItalic.ttf
+        weight: 500
+        style: italic
+      - asset: assets/fonts/Poppins-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Poppins-LightItalic.ttf
+      - asset: assets/fonts/Poppins-Italic.ttf
+        style: italic
+      - asset: assets/fonts/Poppins-Regular.ttf
+        weight: 400
+
+
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  color_dark: "#272727"
+  image: assets/logo/ecommerce_logo_dark.png
+  image_dark: assets/logo/ecommerce_logo_light.png
+  
+
+  android_12:
+    color: "#FFFFFF"
+    color_dark: "#272727"
+    image: assets/logo/ecommerce_logo_dark.png
+    image_dark: assets/logo/ecommerce_logo_light.png
+
+  web: true
+    
+
+  
