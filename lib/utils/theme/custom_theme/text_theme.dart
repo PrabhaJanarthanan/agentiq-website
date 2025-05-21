@@ -14,7 +14,7 @@ class ATTextTheme {
     bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Colors.black),
     bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black.withAlpha(128)), // 50% opacity
     labelLarge: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black),
-    labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black.withAlpha(128)), // 50% opacity
+    labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black), // 50% opacity
   );
 
   static TextTheme darkTextTheme = TextTheme(
@@ -28,6 +28,6 @@ class ATTextTheme {
     bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Colors.white),
     bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white.withAlpha(128)), // 50% opacity
     labelLarge: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white),
-    labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white.withAlpha(128)), // 50% opacity
+    labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white), // 50% opacity
   );
 }

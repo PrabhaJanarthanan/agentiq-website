@@ -2,9 +2,14 @@ class ATImages {
   //website logo
   static const String atLogo = "assets/logo/atlogo.png";
 
+  //Page images
+  static const String botifyFront = "assets/images/botifyimagefront.png";
+
   //socialmedia
-  static const String google = "assets/logo/google.png";
-  static const String facebook = "assets/logo/fb.png";
+  static const String facebook = "assets/icons/facebook.png";
+  static const String instagram = "assets/icons/instagram.png";
+  static const String linkedin = "assets/icons/linkedin.png";
+  static const String twitter = "assets/icons/twitter.png";
 
   //user Profile
   static const String profile = "assets/images/user/userprofile.png";
