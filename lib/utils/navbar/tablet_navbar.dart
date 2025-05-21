@@ -1,3 +1,4 @@
+import 'package:agentiqthingswebsite/utils/constants/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../constants/sizes.dart';
@@ -24,17 +25,8 @@ class _TabletNavbarState extends State<TabletNavbar> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
-                child: Semantics(
-                  child: AutoSizeText(
-                    'Agentiq-Things',
-                    maxLines: 1,
-                    minFontSize: 16,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                ),
-              ),
+              navLogo(context),
+    
               ElevatedButton(
                 onPressed: () {},
                 child: Text(

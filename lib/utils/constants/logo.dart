@@ -17,11 +17,13 @@ Widget navLogo(BuildContext context) {
         ),
       ),
       const SizedBox(width: 8),
-      AutoSizeText(
-        'Agentiq-Things',
-        maxLines: 1,
-        minFontSize: 10,
-        style: Theme.of(context).textTheme.headlineSmall,
+      Semantics(
+        child: AutoSizeText(
+          'Agentiq-Things',
+          maxLines: 1,
+          minFontSize: 10,
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
       ),
     ],
   );
