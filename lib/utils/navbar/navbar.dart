@@ -6,15 +6,30 @@ import 'package:get/get.dart';
 import 'desktop_navbar.dart';
 
 
-class Navbar extends GetResponsiveView<Widget> {
-  Navbar({super.key});
+class Navbar extends GetResponsiveView {
+  final VoidCallback scrollToHome;
+  final VoidCallback scrollToContact;
+  final VoidCallback scrollToFeatures;
+  final Function(int) onNavItemTap;
+
+  Navbar(this.scrollToHome, this.scrollToContact, this.scrollToFeatures, this.onNavItemTap, {super.key});
 
   @override
   Widget phone() => const MobileNavbar();
 
   @override
-  Widget desktop() => const DesktopNavbar();
+  Widget desktop() =>  DesktopNavbar(
+    scrollToHome: scrollToHome,
+    scrollToContact: scrollToContact,
+    scrollToFeatures: scrollToFeatures, 
+    onNavItemTap: onNavItemTap,
+  );
 
   @override
-  Widget tablet() => const TabletNavbar();
+  Widget tablet() =>  TabletNavbar(
+    scrollToHome: scrollToHome,
+    scrollToContact: scrollToContact,
+    scrollToFeatures: scrollToFeatures, 
+    onNavItemTap: onNavItemTap,
+  );
 }

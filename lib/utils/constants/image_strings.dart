@@ -6,10 +6,23 @@ class ATImages {
   static const String botifyFront = "assets/images/botifyimagefront.png";
 
   //socialmedia
-  static const String facebook = "assets/icons/facebook.png";
-  static const String instagram = "assets/icons/instagram.png";
-  static const String linkedin = "assets/icons/linkedin.png";
-  static const String twitter = "assets/icons/twitter.png";
+  static const String facebook = "assets/icons/socialmedia/facebook.png";
+  static const String instagram = "assets/icons/socialmedia/instagram.png";
+  static const String linkedin = "assets/icons/socialmedia/linkedin.png";
+  static const String twitter = "assets/icons/socialmedia/twitter.png";
+  static const String whatsApp = "assets/icons/socialmedia/whatsapp.png";
+
+  //Scrolling features icon
+  static const String aiBot = "assets/icons/scrolling_features/aibot.png";
+  static const String crossPlatform = "assets/icons/scrolling_features/crossPlatform.png";
+  static const String customize = "assets/icons/scrolling_features/customize.png";
+  static const String multiChannel = "assets/icons/scrolling_features/multichannel.png";
+  static const String multiLanguage = "assets/icons/scrolling_features/multilanguage.png";
+  static const String multiLingual = "assets/icons/scrolling_features/multilingual.png";
+  static const String ownCallcentre = "assets/icons/scrolling_features/owncallcentre.png";
+  static const String simpleHardware = "assets/icons/scrolling_features/simplehardware.png";
+  static const String voiceAutomation = "assets/icons/scrolling_features/voiceautomation.png";
+  
 
   //user Profile
   static const String profile = "assets/images/user/userprofile.png";

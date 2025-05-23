@@ -40,21 +40,29 @@ class _FooterDesktopState extends State<FooterDesktop> {
                       children: [
                         Image.asset( ATImages.atLogo, height: 20, width: 20 ),
                         SizedBox(width: ATSizes.spaceBtwItems/2),
-                        Text(
-                          'Agentiq - Things, Inc.',
-                          style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                        Semantics(
+                          child: Text(
+                            'Agentiq - Things, Inc.',
+                            style: textTheme.titleMedium,
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 10),
-                    Text('Email: info@agentiq-things.tech',
-                        style: textTheme.bodySmall?.copyWith(color: Colors.grey.shade700)),
-                    const SizedBox(height: 5),
-                    Text('Phone: +91 9488501457',
-                        style: textTheme.bodySmall?.copyWith(color: Colors.grey.shade700)),
-                    const SizedBox(height: 5),
-                    Text('Address: 118, Mettur Road, Erode',
-                        style: textTheme.bodySmall?.copyWith(color: Colors.grey.shade700)),
+                    const SizedBox(height: ATSizes.spacesBtwTexts),
+                    Semantics(
+                      child: Text('Email: info@agentiq-things.tech',
+                          style: textTheme.bodySmall),
+                    ),
+                    const SizedBox(height: ATSizes.spacesBtwTexts/2),
+                    Semantics(
+                      child: Text('Phone: +91 9488501457',
+                          style: textTheme.bodySmall),
+                    ),
+                    const SizedBox(height: ATSizes.spacesBtwTexts/2),
+                    Semantics(
+                      child: Text('Address: 118, Mettur Road, Erode',
+                          style: textTheme.bodySmall),
+                    ),
                   ],
                 ),
         
@@ -62,19 +70,21 @@ class _FooterDesktopState extends State<FooterDesktop> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Follow us',
-                      style: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+                    Semantics(
+                      child: Text(
+                        'Follow us',
+                        style: textTheme.titleSmall,
+                      ),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: ATSizes.spaceBtwItems),
                     Row(
                       children: [
                         _socialIcon(Image.asset(ATImages.facebook), 'https://facebook.com'),
-                        const SizedBox(width: 15),
+                        const SizedBox(width: ATSizes.spaceBtwItems),
                         _socialIcon(Image.asset(ATImages.instagram), 'https://instagram.com'),
-                        const SizedBox(width: 15),
+                        const SizedBox(width: ATSizes.spaceBtwItems),
                         _socialIcon(Image.asset(ATImages.twitter), 'https://twitter.com'),
-                        const SizedBox(width: 15),
+                        const SizedBox(width: ATSizes.spaceBtwItems),
                         _socialIcon(Image.asset(ATImages.linkedin), 'https://linkedin.com'),
                       ],
                     )
@@ -83,7 +93,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
               ],
             ),
         
-            const SizedBox(height: 40),
+            const SizedBox(height: ATSizes.spaceBtwSections),
         
             // === Footer Links ===
             Row(
@@ -97,12 +107,14 @@ class _FooterDesktopState extends State<FooterDesktop> {
               ],
             ),
         
-            const SizedBox(height: 25),
+            const SizedBox(height: ATSizes.spaceBtwSections),
         
             // === Copyright ===
-            Text(
-              '© 2025 Agentiq - Things, Inc. All rights reserved.',
-              style: textTheme.bodySmall,
+            Semantics(
+              child: Text(
+                '© 2025 Agentiq - Things, Inc. All rights reserved.',
+                style: textTheme.bodySmall,
+              ),
             ),
           ],
         ),
@@ -126,7 +138,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
     );
   }
 
- Widget _socialIcon(Widget iconWidget, String url,  {double size = 24}) {
+ Widget _socialIcon(Widget iconWidget, String url,  { double size = ATSizes.iconMd}) {
   return InkWell(
     onTap: () => launchUrl(Uri.parse(url)),
     child: Padding(

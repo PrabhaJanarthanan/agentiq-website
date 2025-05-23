@@ -16,7 +16,7 @@ class Website extends StatelessWidget {
       theme: ATWebsiteTheme.lightTheme,
       title: 'Agentiq-Things',
       darkTheme: ATWebsiteTheme.darkTheme,
-      getPages: webRoutes,
+      getPages: getPages,
      // initialBinding: GeneralBindings(),
       debugShowCheckedModeBanner: false,
       //initialRoute: '/',

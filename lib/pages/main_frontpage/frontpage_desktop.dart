@@ -12,6 +12,7 @@ class FrontPageDesktop extends StatefulWidget {
 class _FrontPageDesktopState extends State<FrontPageDesktop>
 with TickerProviderStateMixin {
   late AnimationController _controller;
+  // ignore: unused_field
   late Animation<double> _textAnimation;
 
   bool showText = false;

@@ -1,10 +1,15 @@
 import 'package:agentiqthingswebsite/utils/constants/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:get/get.dart';
 import '../constants/sizes.dart';
 
 class TabletNavbar extends StatefulWidget {
-  const TabletNavbar({super.key});
+    final VoidCallback scrollToHome;
+  final VoidCallback scrollToContact;
+  final VoidCallback scrollToFeatures;
+  final Function(int) onNavItemTap;
+  const TabletNavbar({super.key, required this.scrollToHome, required this.scrollToContact, required this.scrollToFeatures, required this.onNavItemTap});
 
   @override
   State<TabletNavbar> createState() => _TabletNavbarState();
@@ -41,10 +46,10 @@ class _TabletNavbarState extends State<TabletNavbar> {
           Wrap(
             spacing: 24,
             children: [
-              _navItem('Home'),
-              _navItem('Features'),
-              _navItem('Contact'),
-              _navItem('About'),
+              _navItem('Home', widget.scrollToHome, 0),
+              _navItem('Features', widget.scrollToFeatures, 1),
+              _navItem('Contact', widget.scrollToContact, 2),
+              _navItem('About', widget.scrollToHome, 0),
             ],
           )
         ],
@@ -52,9 +57,20 @@ class _TabletNavbarState extends State<TabletNavbar> {
     );
   }
 
-  Widget _navItem(String title) {
+  Widget _navItem(String title, VoidCallback scrollFunction, int index) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        scrollFunction(); // scroll to section ✅
+
+        if (index == 0) {
+          Get.toNamed('/home');
+        } else if (index == 1) {
+          Get.toNamed('/features');
+        } else if (index == 2) {
+          Get.toNamed('/contact');
+        }
+        widget.onNavItemTap(index); 
+      },
       mouseCursor: SystemMouseCursors.click,
       child: Semantics(
         child: AutoSizeText(
