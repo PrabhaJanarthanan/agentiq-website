@@ -2,6 +2,7 @@ import 'package:agentiqthingswebsite/utils/constants/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:universal_html/html.dart' as html;
 import '../constants/colors.dart';
 import '../constants/sizes.dart';
 
@@ -62,10 +63,10 @@ class _MobileNavbarState extends State<MobileNavbar> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    _buildMenuItem(Iconsax.home, 'Home', widget.scrollToHome, 0),
-                    _buildMenuItem(Iconsax.element_equal, 'Features', widget.scrollToFeatures, 1),
-                    _buildMenuItem(Iconsax.mobile, 'Contact Us', widget.scrollToContact, 2),
-                    _buildMenuItem(Iconsax.profile_circle, 'About', widget.scrollToHome, 3),
+                    _buildMenuItem(Iconsax.home, 'Home', widget.scrollToHome, 'home', 0),
+                    _buildMenuItem(Iconsax.element_equal, 'Features', widget.scrollToFeatures, 'features', 1),
+                    _buildMenuItem(Iconsax.mobile, 'Contact Us', widget.scrollToContact, 'contact', 2),
+                    _buildMenuItem(Iconsax.profile_circle, 'About', widget.scrollToHome, 'home', 3),
                   
                   ],
                 ),
@@ -77,7 +78,7 @@ class _MobileNavbarState extends State<MobileNavbar> {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String label, VoidCallback onTap, int index) {
+  Widget _buildMenuItem(IconData icon, String label, VoidCallback scrollFunction, String path, int index) {
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +89,10 @@ class _MobileNavbarState extends State<MobileNavbar> {
         ],
       ),
       onTap: (){
-        onTap();
+        if (html.window.location.pathname != '/$path') {
+          html.window.history.pushState(null, '', '/$path');
+        }
+       scrollFunction();
         widget.onNavItemTap(index); 
         setState(() {
           _isExpanded = false; // Close the menu after selection

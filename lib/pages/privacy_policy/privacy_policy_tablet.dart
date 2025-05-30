@@ -26,14 +26,18 @@ class PrivacyPolicyTablet extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Privacy Policy',
-                  style: Theme.of(context).textTheme.headlineSmall
+                Semantics(
+                  child: Text(
+                    'Privacy Policy',
+                    style: Theme.of(context).textTheme.headlineSmall
+                  ),
                 ),
                 SizedBox(height: ATSizes.spaceBtwSections), 
-                Text(
-                  privacypolicycontent,
-                  style: Theme.of(context).textTheme.labelMedium,
+                Semantics(
+                  child: Text(
+                    privacypolicycontent,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
                 ),
               ],
             ),

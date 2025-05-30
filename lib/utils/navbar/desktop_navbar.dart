@@ -68,22 +68,16 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
     );
   }
 
-Widget _navItem(String title, VoidCallback scrollFunction, String hash, int index) {
+Widget _navItem(String title, VoidCallback scrollFunction, String path, int index) {
   return Padding(
     padding: const EdgeInsets.all(ATSizes.appBarHeight),
     child: InkWell(
       onTap: () {
-        html.window.location.hash = hash;
+         if (html.window.location.pathname != '/$path') {
+          html.window.history.pushState(null, '', '/$path');
+        }
         scrollFunction(); // scroll to section ✅
-       // Get.toNamed('/home?section=$routeSection', preventDuplicates: false);
-        // if (index == 0) {
-        //   Get.toNamed('/home');
-        // } else if (index == 1) {
-        //   Get.toNamed('/features');
-        // } else if (index == 2) {
-        //   Get.toNamed('/contact');
-        // }
-        //widget.onNavItemTap(index); 
+    
       },
       mouseCursor: SystemMouseCursors.click,
       child: Semantics(

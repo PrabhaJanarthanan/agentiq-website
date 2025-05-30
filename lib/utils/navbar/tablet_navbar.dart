@@ -1,7 +1,7 @@
 import 'package:agentiqthingswebsite/utils/constants/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:get/get.dart';
+import 'package:universal_html/html.dart' as html;
 import '../constants/sizes.dart';
 
 class TabletNavbar extends StatefulWidget {
@@ -46,10 +46,10 @@ class _TabletNavbarState extends State<TabletNavbar> {
           Wrap(
             spacing: 24,
             children: [
-              _navItem('Home', widget.scrollToHome, 0),
-              _navItem('Features', widget.scrollToFeatures, 1),
-              _navItem('Contact', widget.scrollToContact, 2),
-              _navItem('About', widget.scrollToHome, 0),
+              _navItem('Home', widget.scrollToHome, 'home', 0, ),
+              _navItem('Features', widget.scrollToFeatures,'features', 1),
+              _navItem('Contact', widget.scrollToContact, 'contact', 2),
+              _navItem('About', widget.scrollToHome, 'home', 0),
             ],
           )
         ],
@@ -57,18 +57,21 @@ class _TabletNavbarState extends State<TabletNavbar> {
     );
   }
 
-  Widget _navItem(String title, VoidCallback scrollFunction, int index) {
+  Widget _navItem(String title, VoidCallback scrollFunction, String path, int index) {
     return InkWell(
       onTap: () {
+        if (html.window.location.pathname != '/$path') {
+          html.window.history.pushState(null, '', '/$path');
+        }
         scrollFunction(); // scroll to section ✅
 
-        if (index == 0) {
-          Get.toNamed('/home');
-        } else if (index == 1) {
-          Get.toNamed('/features');
-        } else if (index == 2) {
-          Get.toNamed('/contact');
-        }
+        // if (index == 0) {
+        //   Get.toNamed('/home');
+        // } else if (index == 1) {
+        //   Get.toNamed('/features');
+        // } else if (index == 2) {
+        //   Get.toNamed('/contact');
+        // }
         widget.onNavItemTap(index); 
       },
       mouseCursor: SystemMouseCursors.click,

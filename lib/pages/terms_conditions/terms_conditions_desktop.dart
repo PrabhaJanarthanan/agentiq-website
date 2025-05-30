@@ -6,7 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../common/appbar/appbar.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
-import '../return_refund/refund_content.dart';
+import 'terms_content.dart';
 
 class TermsConditionsDesktop extends StatelessWidget {
   @override
@@ -26,14 +26,18 @@ class TermsConditionsDesktop extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Refund Policy',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                Semantics(
+                  child: Text(
+                    'Terms and Conditions',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
                 ),
                 SizedBox(height: ATSizes.spaceBtwSections),
-                Text(
-                  refundContent,
-                  style: Theme.of(context).textTheme.labelMedium,
+                Semantics(
+                  child: Text(
+                    termsAndConditionsContent,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
                 ),
               ],
             ),
