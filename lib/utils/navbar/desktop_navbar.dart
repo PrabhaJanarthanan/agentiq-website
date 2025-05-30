@@ -2,7 +2,8 @@ import 'package:agentiqthingswebsite/utils/constants/colors.dart';
 import 'package:agentiqthingswebsite/utils/constants/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:get/get.dart';
+import 'package:universal_html/html.dart' as html;
+
 
 import '../constants/sizes.dart';
 
@@ -46,11 +47,11 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                _navItem('Home', widget.scrollToHome, 0),
-                _navItem('Features', widget.scrollToFeatures, 1),              
+                _navItem('Home', widget.scrollToHome, 'home', 0 ),
+                _navItem('Features', widget.scrollToFeatures, 'features', 1, ),              
                
-                _navItem('Contact', widget.scrollToContact, 2),
-                _navItem('About', widget.scrollToHome, 0),
+                _navItem('Contact', widget.scrollToContact, 'contact',2, ),
+                _navItem('About', widget.scrollToHome, 'home',0, ),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {},
@@ -67,21 +68,22 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
     );
   }
 
-Widget _navItem(String title, VoidCallback scrollFunction, int index) {
+Widget _navItem(String title, VoidCallback scrollFunction, String hash, int index) {
   return Padding(
     padding: const EdgeInsets.all(ATSizes.appBarHeight),
     child: InkWell(
       onTap: () {
+        html.window.location.hash = hash;
         scrollFunction(); // scroll to section ✅
-
-        if (index == 0) {
-          Get.toNamed('/home');
-        } else if (index == 1) {
-          Get.toNamed('/features');
-        } else if (index == 2) {
-          Get.toNamed('/contact');
-        }
-        widget.onNavItemTap(index); 
+       // Get.toNamed('/home?section=$routeSection', preventDuplicates: false);
+        // if (index == 0) {
+        //   Get.toNamed('/home');
+        // } else if (index == 1) {
+        //   Get.toNamed('/features');
+        // } else if (index == 2) {
+        //   Get.toNamed('/contact');
+        // }
+        //widget.onNavItemTap(index); 
       },
       mouseCursor: SystemMouseCursors.click,
       child: Semantics(

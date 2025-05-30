@@ -6,7 +6,17 @@ import '../constants/colors.dart';
 import '../constants/sizes.dart';
 
 class MobileNavbar extends StatefulWidget {
-  const MobileNavbar({super.key});
+  final VoidCallback scrollToHome;
+  final VoidCallback scrollToContact;
+  final VoidCallback scrollToFeatures;
+  final Function(int) onNavItemTap;
+
+  const MobileNavbar(
+    {super.key, 
+    required this.scrollToHome, 
+    required this.scrollToContact, 
+    required this.scrollToFeatures, 
+    required this.onNavItemTap});
 
   @override
   State<MobileNavbar> createState() => _MobileNavbarState();
@@ -47,16 +57,18 @@ class _MobileNavbarState extends State<MobileNavbar> {
           constraints: BoxConstraints(
             maxHeight: _isExpanded ? 240 : 0,
           ),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  _buildMenuItem(Iconsax.home, 'Home', () {}),
-                  _buildMenuItem(Iconsax.element_equal, 'Features', () {}),
-                  _buildMenuItem(Iconsax.mobile, 'Contact Us', () {}),
-                  _buildMenuItem(Iconsax.profile_circle, 'About', () {}),
-                
-                ],
+          child: Material(
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _buildMenuItem(Iconsax.home, 'Home', widget.scrollToHome, 0),
+                    _buildMenuItem(Iconsax.element_equal, 'Features', widget.scrollToFeatures, 1),
+                    _buildMenuItem(Iconsax.mobile, 'Contact Us', widget.scrollToContact, 2),
+                    _buildMenuItem(Iconsax.profile_circle, 'About', widget.scrollToHome, 3),
+                  
+                  ],
+                ),
               ),
             ),
           ),
@@ -65,9 +77,8 @@ class _MobileNavbarState extends State<MobileNavbar> {
     );
   }
 
-  Widget _buildMenuItem(IconData icon, String label, VoidCallback onTap) {
+  Widget _buildMenuItem(IconData icon, String label, VoidCallback onTap, int index) {
     return ListTile(
-     // contentPadding: EdgeInsets.symmetric(vertical: 4.0),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -76,7 +87,14 @@ class _MobileNavbarState extends State<MobileNavbar> {
           AutoSizeText(label, style: Theme.of(context).textTheme.titleMedium),
         ],
       ),
-      onTap: onTap,
+      onTap: (){
+        onTap();
+        widget.onNavItemTap(index); 
+        setState(() {
+          _isExpanded = false; // Close the menu after selection
+        });
+ 
+      },
     );
   }
 }

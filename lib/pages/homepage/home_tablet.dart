@@ -35,17 +35,24 @@ class HomePageTablet extends StatefulWidget {
 
 class _HomePageTabletState extends State<HomePageTablet> 
 with SingleTickerProviderStateMixin{
+
   late AnimationController _controller;
   bool _isHomeFabVisible = false;
 
   @override 
   void initState(){
     super.initState();
-    _controller = AnimationController(vsync: this,
+    _controller = AnimationController(
+    vsync: this,
     duration: Duration(milliseconds: 800),
     )..repeat(reverse: true);
 
-    widget.scrollController.addListener((){
+    widget.scrollController.addListener(_scrollListener);
+  }
+
+    void _scrollListener(){
+      if(!mounted) return;
+   
       if(widget.scrollController.position.pixels > 100){
         if(!_isHomeFabVisible){
           setState(() {
@@ -59,12 +66,12 @@ with SingleTickerProviderStateMixin{
           });
         }
       }
-    });
+  
   }
 
   @override 
   void dispose(){
-    widget.scrollController.removeListener((){});
+    widget.scrollController.removeListener(_scrollListener);
     _controller.dispose();
     super.dispose();
   }

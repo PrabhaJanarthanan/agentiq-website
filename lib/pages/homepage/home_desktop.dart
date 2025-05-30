@@ -6,6 +6,7 @@ import 'package:agentiqthingswebsite/utils/constants/image_strings.dart';
 import 'package:agentiqthingswebsite/utils/navbar/desktop_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../utils/constants/sizes.dart';
@@ -47,7 +48,24 @@ with SingleTickerProviderStateMixin {
     duration: Duration(milliseconds: 800),
     )..repeat(reverse: true);
 
-    widget.scrollController.addListener((){
+    widget.scrollController.addListener(_scrollListener);
+
+     // Handle hash scroll on load
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    final hash = html.window.location.hash;
+    if (hash == 'home') {
+      scrollToSection(widget.homeKey);
+    } else if (hash == 'features') {
+      scrollToSection(widget.featuresKey);
+    } else if (hash == 'contact') {
+      scrollToSection(widget.contactKey);
+    }
+  });
+  }
+    
+    void _scrollListener(){
+      if(!mounted) return;
+
       if(widget.scrollController.position.pixels > 100){
         if(!_isHomeFabVisible){
           setState(() {
@@ -61,13 +79,23 @@ with SingleTickerProviderStateMixin {
           });
         }
       }
-    });
-
+    
+    }
+  void scrollToSection(GlobalKey key) {
+  final context = key.currentContext;
+  if (context != null) {
+    Scrollable.ensureVisible(
+      context,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
+}
+
 
   @override 
   void dispose(){
-    widget.scrollController.removeListener((){});
+    widget.scrollController.removeListener(_scrollListener);
     _controller.dispose();
     super.dispose();
   }
@@ -88,12 +116,13 @@ with SingleTickerProviderStateMixin {
     return Scaffold(
       body: Column(
       children: [
-        DesktopNavbar(
-          scrollToHome: widget.scrollToHome,
-          scrollToContact: widget.scrollToContact,
-          scrollToFeatures: widget.scrollToFeatures,
-          onNavItemTap: (index){},
-        ),
+            DesktopNavbar(
+        scrollToHome: () => scrollToSection(widget.homeKey),
+        scrollToContact: () => scrollToSection(widget.contactKey),
+        scrollToFeatures: () => scrollToSection(widget.featuresKey),
+        onNavItemTap: (index) {},
+      ),
+
        // SizedBox(height: ATSizes.spaceBtwSections),
         Expanded(
           
@@ -117,7 +146,8 @@ with SingleTickerProviderStateMixin {
                 child: FooterDesktop()),
 
             ],
-          )),
+          )
+          ),
         ),
      
         
@@ -141,7 +171,7 @@ with SingleTickerProviderStateMixin {
                 ),
                 onPressed: widget.scrollToHome,
                 fillColor: ATColors.primaryColor,
-                child: Icon(Iconsax.arrow_square_up),), 
+                child: Icon(Iconsax.arrow_up_2),), 
               ), 
             ),
 
@@ -168,4 +198,5 @@ with SingleTickerProviderStateMixin {
       ),
     );
   }
+  
 }

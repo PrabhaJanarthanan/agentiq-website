@@ -109,13 +109,16 @@ class FooterTablet extends StatelessWidget {
   }
 
   Widget _footerLink(BuildContext context, String text, String route) {
-    return GestureDetector(
-      onTap: () => Get.toNamed(route),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-              decoration: TextDecoration.underline,
-            ),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => Get.toNamed(route),
+        child: Text(
+          text,
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                decoration: TextDecoration.underline,
+              ),
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:agentiqthingswebsite/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class ATElevatedButtonTheme {
@@ -7,10 +8,10 @@ class ATElevatedButtonTheme {
       style: ElevatedButton.styleFrom(
     elevation: 0,
     foregroundColor: Colors.white,
-    backgroundColor: Colors.amber,
+    backgroundColor: ATColors.primaryColor,
     disabledBackgroundColor: Colors.blueGrey,
     disabledForegroundColor: Colors.blueGrey,
-    side: const BorderSide(color: Colors.amber),
+    side: const BorderSide(color: ATColors.primaryColor,),
     padding: const EdgeInsets.symmetric(vertical: 18),
     textStyle: const TextStyle(
         fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
@@ -25,7 +26,7 @@ class ATElevatedButtonTheme {
     backgroundColor: Colors.amber,
     disabledBackgroundColor: Colors.blueGrey,
     disabledForegroundColor: Colors.blueGrey,
-    side: const BorderSide(color: Colors.amber),
+    side: const BorderSide(color: ATColors.primaryColor),
     padding: const EdgeInsets.symmetric(vertical: 18),
     textStyle: const TextStyle(
         fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),

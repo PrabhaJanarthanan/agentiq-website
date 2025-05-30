@@ -43,21 +43,34 @@ class HomePage extends GetResponsiveView {
   }
 
   void onNavItemTap(int index){
+    if (Get.currentRoute != '/') {
+
     if(index == 0){
-      scrollToHome();
+      Get.toNamed('/home');
     } else if(index == 1){
-      scrollToFeatures();
+      Get.toNamed('/features');
     } else if(index == 2){
-      scrollToContact();
+      Get.toNamed('/contact');
     }
 
   Future.delayed(const Duration(milliseconds: 1000), () {
-    if (Get.currentRoute != '/') {
-      Get.offAllNamed('/');
+    // if (Get.currentRoute != '/') {
+    //   Get.offAllNamed('/');
+    // }
+    switch (index){
+      case 0: scrollToHome(); break;
+      case 1: scrollToFeatures(); break;
+      case 2: scrollToContact(); break;
     }
   });
+  } else {
+      switch (index){
+        case 0: scrollToHome(); break;
+        case 1: scrollToFeatures(); break;
+        case 2: scrollToContact(); break;
+      }
+    }
   }
-
     @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -75,7 +88,17 @@ class HomePage extends GetResponsiveView {
   }
 
   @override
-  Widget phone() => const HomePageMobile();
+  Widget phone() =>  HomePageMobile(
+    scrollController: _scrollController,
+    contactKey: _contactKey,
+    featuresKey: _featuresKey,
+    homeKey: _homeKey,
+    scrollToHome: scrollToHome,
+    scrollToFeatures: scrollToFeatures,
+    scrollToContact: scrollToContact,
+    onNavItemTap: onNavItemTap,
+
+  );
 
   @override
   Widget desktop() =>  HomePageDesktop(

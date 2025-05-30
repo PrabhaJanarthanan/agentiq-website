@@ -81,7 +81,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
                       children: [
                         _socialIcon(Image.asset(ATImages.facebook), 'https://facebook.com'),
                         const SizedBox(width: ATSizes.spaceBtwItems),
-                        _socialIcon(Image.asset(ATImages.instagram), 'https://instagram.com'),
+                        _socialIcon(Image.asset(ATImages.instagram), 'https://www.instagram.com/agentiq_things/'),
                         const SizedBox(width: ATSizes.spaceBtwItems),
                         _socialIcon(Image.asset(ATImages.twitter), 'https://twitter.com'),
                         const SizedBox(width: ATSizes.spaceBtwItems),

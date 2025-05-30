@@ -12,10 +12,18 @@ class Navbar extends GetResponsiveView {
   final VoidCallback scrollToFeatures;
   final Function(int) onNavItemTap;
 
+
   Navbar(this.scrollToHome, this.scrollToContact, this.scrollToFeatures, this.onNavItemTap, {super.key});
 
   @override
-  Widget phone() => const MobileNavbar();
+  Widget phone() =>  MobileNavbar(
+    scrollToHome : scrollToHome,
+    scrollToContact : scrollToContact,
+    scrollToFeatures : scrollToFeatures,
+    onNavItemTap: onNavItemTap,
+    
+
+  );
 
   @override
   Widget desktop() =>  DesktopNavbar(
