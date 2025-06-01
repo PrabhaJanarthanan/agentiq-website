@@ -166,37 +166,37 @@ class BotifyContentDesktop extends StatelessWidget {
               
             ),
 
-            //button
-           Padding(
-  padding: const EdgeInsets.all(16.0),
-  child: Column(
-    children: [
-      ElevatedButton.icon(
-        icon: const Icon(Icons.play_circle_fill),
-        label: const Text("Try It Live – Book a Demo"),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: ATColors.primaryColor,
-          foregroundColor: Colors.black,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          textStyle: Theme.of(context).textTheme.bodySmall,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-        onPressed: () {
+//             //button
+//            Padding(
+//   padding: const EdgeInsets.all(16.0),
+//   child: Column(
+//     children: [
+//       ElevatedButton.icon(
+//         icon: const Icon(Icons.play_circle_fill),
+//         label: const Text("Try It Live – Book a Demo"),
+//         style: ElevatedButton.styleFrom(
+//           backgroundColor: ATColors.primaryColor,
+//           foregroundColor: Colors.black,
+//           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+//           textStyle: Theme.of(context).textTheme.bodySmall,
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(12),
+//           ),
+//         ),
+//         onPressed: () {
           
-        },
-      ),
-      const SizedBox(height: 8),
-       Semantics(
-         child: Text(
-          "Only 15 minutes – no pressure, just value.",
-          style: Theme.of(context).textTheme.bodySmall,
-               ),
-       ),
-    ],
-  ),
-)
+//         },
+//       ),
+//       const SizedBox(height: 8),
+//        Semantics(
+//          child: Text(
+//           "Only 15 minutes – no pressure, just value.",
+//           style: Theme.of(context).textTheme.bodySmall,
+//                ),
+//        ),
+//     ],
+//   ),
+// )
 
           ],
         ),

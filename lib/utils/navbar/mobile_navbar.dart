@@ -66,7 +66,7 @@ class _MobileNavbarState extends State<MobileNavbar> {
                     _buildMenuItem(Iconsax.home, 'Home', widget.scrollToHome, 'home', 0),
                     _buildMenuItem(Iconsax.element_equal, 'Features', widget.scrollToFeatures, 'features', 1),
                     _buildMenuItem(Iconsax.mobile, 'Contact Us', widget.scrollToContact, 'contact', 2),
-                    _buildMenuItem(Iconsax.profile_circle, 'About', widget.scrollToHome, 'home', 3),
+                   // _buildMenuItem(Iconsax.profile_circle, 'About', widget.scrollToHome, 'home', 3),
                   
                   ],
                 ),

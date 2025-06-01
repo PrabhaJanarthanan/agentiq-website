@@ -50,17 +50,17 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
                 _navItem('Features', widget.scrollToFeatures, 'features', 1, ),              
                
                 _navItem('Contact', widget.scrollToContact, 'contact',2, ),
-                _navItem('About', widget.scrollToHome, 'home',0, ),
+              //  _navItem('About', widget.scrollToHome, 'home',0, ),
                 const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {
-                     //showRequestDemoForm(context);
-                  },
-                  child: Text(
-                    'Demo',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ),
+                // ElevatedButton(
+                //   onPressed: () {
+                //      //showRequestDemoForm(context);
+                //   },
+                //   child: Text(
+                //     'Demo',
+                //     style: Theme.of(context).textTheme.bodyMedium,
+                //   ),
+                // ),
               ],
             ),
           ),

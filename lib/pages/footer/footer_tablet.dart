@@ -100,7 +100,7 @@ class FooterTablet extends StatelessWidget {
             Center(
               child: Semantics(
                 child: Text(
-                  '© 2025 Agentiq - Things, Inc. All rights reserved.',
+                  '© 2025 Agentiq - Things, LLP. All rights reserved.',
                   textAlign: TextAlign.center,
                   style: textTheme.bodySmall,
                 ),

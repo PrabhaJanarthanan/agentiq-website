@@ -4,13 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../utils/constants/colors.dart';
+
 class AgentiqLabWidgetDesktop extends StatelessWidget {
   AgentiqLabWidgetDesktop({super.key});
   final controller = Get.put(MainPageController());
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-        title: Text("AgentIQ Lab", style: TextStyle(color: Colors.deepPurple)),
+        title: Center(
+          child: Text("AgentIQ Studio", 
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: ATColors.primaryColor)
+          ),
+        ),
         initiallyExpanded: true,
         children: [
           SizedBox(
@@ -498,7 +504,7 @@ class AgentiqLabWidgetMobile extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: ExpansionTile(
           title:
-              Text("AgentIQ Lab", style: TextStyle(color: Colors.deepPurple)),
+              Text("AgentIQ Studio", style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: ATColors.primaryColor)),
           initiallyExpanded: true,
           children: [
             SizedBox(

@@ -37,16 +37,16 @@ class FrontPageMobile extends StatelessWidget {
             
           ),
           const SizedBox(height: ATSizes.spaceBtwItems),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: ElevatedButton(onPressed: (){}, 
-            child: Padding(
-              padding: const EdgeInsets.all(ATSizes.defaultSpace/3),
-              child: Text("Book a Demo",
-              style: Theme.of(context).textTheme.labelMedium,),
-            )),
-          ),
-            const SizedBox(height: ATSizes.spaceBtwItems),
+          // Align(
+          //   alignment: Alignment.centerLeft,
+          //   child: ElevatedButton(onPressed: (){}, 
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(ATSizes.defaultSpace/3),
+          //     child: Text("Book a Demo",
+          //     style: Theme.of(context).textTheme.labelMedium,),
+          //   )),
+          // ),
+          //   const SizedBox(height: ATSizes.spaceBtwItems),
 
           if(bulletText) _buildBulletText(context)
         ],

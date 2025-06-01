@@ -112,7 +112,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
             // === Copyright ===
             Semantics(
               child: Text(
-                '© 2025 Agentiq - Things, Inc. All rights reserved.',
+                '© 2025 Agentiq - Things, LLP. All rights reserved.',
                 style: textTheme.bodySmall,
               ),
             ),

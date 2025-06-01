@@ -56,7 +56,7 @@ with TickerProviderStateMixin {
               header: true,
               child: Text(
                 '“Botify - AI That Gets Things Done in 24 Hours”',
-                style: Theme.of(context).textTheme.headlineLarge
+                style: Theme.of(context).textTheme.headlineMedium
               ),
             ),
 
