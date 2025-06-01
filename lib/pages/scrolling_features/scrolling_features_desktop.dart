@@ -53,6 +53,7 @@ class _ScrollingFeaturesDesktopState extends State<ScrollingFeaturesDesktop> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+           
             // Icon
             Padding(
               padding: EdgeInsets.all(ATSizes.spaceBtwItems/2),

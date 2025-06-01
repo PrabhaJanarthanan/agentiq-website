@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/sizes.dart';
+import '../../utils/helpers/helper_functions.dart';
 import 'content/scrolling_features_content.dart';
 
 class ScrollingFeaturesMobile extends StatelessWidget {
@@ -10,12 +11,14 @@ class ScrollingFeaturesMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final dark = ATHelperFunctions.isDarkMode(context);
     return Container(
       margin: EdgeInsets.all(ATSizes.spaceBtwItems),
       padding: EdgeInsets.all(ATSizes.spaceBtwItems),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: ATColors.white,
+        border: Border.all(color: dark ? ATColors.white : Colors.transparent),
+        color: dark ? Colors.transparent : ATColors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -39,10 +42,12 @@ class ScrollingFeaturesMobile extends StatelessWidget {
             ),
           ),
           const SizedBox(height: ATSizes.spacesBtwTexts),
-          Text(
-            feature.subtitle,
-            style: Theme.of(context).textTheme.labelMedium,
-            textAlign: TextAlign.center,
+          Semantics(
+            child: Text(
+              feature.subtitle,
+              style: Theme.of(context).textTheme.labelMedium,
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       ),

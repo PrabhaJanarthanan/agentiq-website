@@ -45,7 +45,7 @@ Agentiq - Things
 Edayankattuvalasu, Erode,  
 Tamil Nadu - 638001, India  
 Mobile: +91 9043249455  
-Email: support@profinix.tech
+Email: info@agentiq-things.tech
 
 Last updated: May 2025
 ''';

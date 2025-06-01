@@ -137,9 +137,11 @@ class FrontPageMobile extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         Flexible(
-          child: Text.rich(
-            TextSpan(children: spans),
-            textAlign: TextAlign.start,
+          child: Semantics(
+            child: Text.rich(
+              TextSpan(children: spans),
+              textAlign: TextAlign.start,
+            ),
           ),
         ),
       ],

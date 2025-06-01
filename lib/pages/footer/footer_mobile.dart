@@ -18,7 +18,7 @@ class FooterMobile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: ATSizes.spaceBtwItems),
 
            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,19 +32,21 @@ class FooterMobile extends StatelessWidget {
                       Row(
                         children: [
                           Image.asset(ATImages.atLogo, height: 28, width: 28),
-                          const SizedBox(width: 10),
-                          Text(
-                            'Agentiq - Things, Inc.',
-                            style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                          const SizedBox(width: ATSizes.spacesBtwTexts),
+                          Semantics(
+                            child: Text(
+                              'Agentiq - Things, Inc.',
+                              style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 12),
-                      Text('Email: info@agentiq-things.tech', style: textTheme.labelLarge),
+                      Semantics(child: Text('Email: info@agentiq-things.tech', style: textTheme.labelLarge)),
                       const SizedBox(height: 5),
-                      Text('Phone: +91 9488501457', style: textTheme.labelLarge),
+                      Semantics(child: Text('Phone: +91 9488501457', style: textTheme.labelLarge)),
                       const SizedBox(height: 5),
-                      Text('Address: 118, Mettur Road, Erode', style: textTheme.labelLarge),
+                      Semantics(child: Text('Address: 118, Mettur Road, Erode', style: textTheme.labelLarge)),
                     ],
                   ),
                 ),
@@ -96,10 +98,12 @@ class FooterMobile extends StatelessWidget {
 
             // === Copyright ===
             Center(
-              child: Text(
-                '© 2025 Agentiq - Things, Inc. All rights reserved.',
-                textAlign: TextAlign.center,
-                style: textTheme.bodySmall,
+              child: Semantics(
+                child: Text(
+                  '© 2025 Agentiq - Things, Inc. All rights reserved.',
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodySmall,
+                ),
               ),
             ),
           ],
@@ -113,11 +117,13 @@ class FooterMobile extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () => Get.toNamed(route),
-        child: Text(
-          text,
-          style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                decoration: TextDecoration.underline,
-              ),
+        child: Semantics(
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  decoration: TextDecoration.underline,
+                ),
+          ),
         ),
       ),
     );

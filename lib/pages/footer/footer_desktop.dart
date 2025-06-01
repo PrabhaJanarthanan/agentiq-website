@@ -25,7 +25,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 30),
+            const SizedBox(height: ATSizes.spaceBtwSections),
         
             // === Contact Info & Socials ===
             Row(
@@ -79,7 +79,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
                     const SizedBox(height: ATSizes.spaceBtwItems),
                     Row(
                       children: [
-                        _socialIcon(Image.asset(ATImages.facebook), 'https://facebook.com'),
+                        _socialIcon(Image.asset(ATImages.facebook,), 'https://facebook.com'),
                         const SizedBox(width: ATSizes.spaceBtwItems),
                         _socialIcon(Image.asset(ATImages.instagram), 'https://www.instagram.com/agentiq_things/'),
                         const SizedBox(width: ATSizes.spaceBtwItems),
@@ -144,6 +144,7 @@ class _FooterDesktopState extends State<FooterDesktop> {
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: SizedBox(
+        
         width: size,
         
         height: size,

@@ -10,6 +10,8 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../utils/constants/sizes.dart';
+import '../../utils/helpers/helper_functions.dart';
+import '../demo_front/agentiq_lab_widget.dart';
 import '../scrolling_features/auto_scroll_widgets/auto_scroll_features_desktop.dart';
 import '../scrolling_features/content/scrolling_features_content.dart';
 
@@ -113,6 +115,7 @@ with SingleTickerProviderStateMixin {
   }
   @override
   Widget build(BuildContext context) {
+    final dark = ATHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: Column(
       children: [
@@ -131,6 +134,7 @@ with SingleTickerProviderStateMixin {
             padding: EdgeInsets.only(right: ATSizes.spaceBtwSections*2, left: ATSizes.spaceBtwSections*2),
             child: Column(
             children: [
+              AgentiqLabWidgetDesktop(),
               KeyedSubtree(
                 key: widget.homeKey,
                 child: FrontPageDesktop()),
@@ -187,7 +191,7 @@ with SingleTickerProviderStateMixin {
                 ),
                 child: FloatingActionButton(
                   onPressed: _openWhatsApp,
-                 // backgroundColor: Colors.transparent,
+                 backgroundColor:dark? Colors.transparent : ATColors.white,
                   child: Image.asset(ATImages.whatsApp,
                   width: ATSizes.iconLg,
                   height: ATSizes.iconLg),),

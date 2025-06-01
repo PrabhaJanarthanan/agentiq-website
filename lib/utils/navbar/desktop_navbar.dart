@@ -1,4 +1,3 @@
-import 'package:agentiqthingswebsite/utils/constants/colors.dart';
 import 'package:agentiqthingswebsite/utils/constants/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -30,7 +29,7 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      color: ATColors.white,
+      //color: ATColors.white,
       padding: EdgeInsets.symmetric(
         vertical: ATSizes.defaultSpace,
         horizontal: screenWidth * 0.05,
@@ -54,7 +53,9 @@ class _DesktopNavbarState extends State<DesktopNavbar> {
                 _navItem('About', widget.scrollToHome, 'home',0, ),
                 const SizedBox(width: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     //showRequestDemoForm(context);
+                  },
                   child: Text(
                     'Demo',
                     style: Theme.of(context).textTheme.bodyMedium,

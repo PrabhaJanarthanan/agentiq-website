@@ -23,7 +23,7 @@ class ATElevatedButtonTheme {
       style: ElevatedButton.styleFrom(
     elevation: 0,
     foregroundColor: Colors.white,
-    backgroundColor: Colors.amber,
+    backgroundColor: ATColors.primaryColor,
     disabledBackgroundColor: Colors.blueGrey,
     disabledForegroundColor: Colors.blueGrey,
     side: const BorderSide(color: ATColors.primaryColor),

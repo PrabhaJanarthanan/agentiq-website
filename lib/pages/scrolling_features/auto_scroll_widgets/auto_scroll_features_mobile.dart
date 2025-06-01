@@ -60,6 +60,10 @@ class _AutoScrollFeaturesMobileState extends State<AutoScrollFeaturesMobile> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+           Semantics(
+             child: Text('Features',
+             style: Theme.of(context).textTheme.headlineSmall),
+           ),
           SizedBox(
             height: 200,
             child: PageView.builder(

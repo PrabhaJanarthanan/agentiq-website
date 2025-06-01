@@ -58,17 +58,25 @@ class _AutoScrollFeaturesDesktopState extends State<AutoScrollFeaturesDesktop> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: SizedBox(
-        height: 250,
-        child: ListView.separated(
-          controller: _scrollController,
-          scrollDirection: Axis.horizontal,
-          itemCount: widget.features.length,
-          itemBuilder: (context, index) {
-            return ScrollingFeaturesDesktop(feature: widget.features[index]);
-          },
-          separatorBuilder: (context, index) => const SizedBox(width: 20),
-        ),
+      child: Column(
+        children: [
+           Semantics(
+             child: Text('Features',
+             style: Theme.of(context).textTheme.headlineMedium,),
+           ),
+          SizedBox(
+            height: 250,
+            child: ListView.separated(
+              controller: _scrollController,
+              scrollDirection: Axis.horizontal,
+              itemCount: widget.features.length,
+              itemBuilder: (context, index) {
+                return ScrollingFeaturesDesktop(feature: widget.features[index]);
+              },
+              separatorBuilder: (context, index) => const SizedBox(width: 20),
+            ),
+          ),
+        ],
       ),
     );
   }

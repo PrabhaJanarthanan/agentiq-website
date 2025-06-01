@@ -56,7 +56,7 @@ class _MobileNavbarState extends State<MobileNavbar> {
         AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           constraints: BoxConstraints(
-            maxHeight: _isExpanded ? 240 : 0,
+            maxHeight: _isExpanded ? 200 : 0,
           ),
           child: Material(
             child: Center(
@@ -85,7 +85,7 @@ class _MobileNavbarState extends State<MobileNavbar> {
         children: [
           Icon(icon, color: ATColors.primaryColor, size: ATSizes.iconSm),
           SizedBox(width: ATSizes.defaultSpace / 2),
-          AutoSizeText(label, style: Theme.of(context).textTheme.titleMedium),
+          AutoSizeText(label, style: Theme.of(context).textTheme.labelMedium),
         ],
       ),
       onTap: (){

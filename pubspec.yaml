@@ -18,7 +18,12 @@ dependencies:
   intl:
   url_launcher: ^6.3.1
   
- 
+  dio: ^5.8.0+1
+  just_audio: ^0.10.3
+  agentiq:
+    # path: ../flutter_app/agentiq
+      git:
+        url: https://github.com/rajajanarthanan/agentiq.git
   
 
   #icons

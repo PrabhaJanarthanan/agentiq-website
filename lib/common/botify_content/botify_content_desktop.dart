@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../utils/constants/sizes.dart';
+import '../../utils/helpers/helper_functions.dart';
 
 
 class BotifyContentDesktop extends StatelessWidget {
@@ -136,9 +137,11 @@ class BotifyContentDesktop extends StatelessWidget {
   }
 
   Widget _buildImageSection(BuildContext context) {
+     final dark = ATHelperFunctions.isDarkMode(context);
     return Flexible(
       flex: 2,
       child: Card(
+        color: dark ? Colors.transparent : ATColors.white,
         elevation: 6,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
@@ -185,10 +188,12 @@ class BotifyContentDesktop extends StatelessWidget {
         },
       ),
       const SizedBox(height: 8),
-       Text(
-        "Only 15 minutes – no pressure, just value.",
-        style: Theme.of(context).textTheme.bodySmall,
-      ),
+       Semantics(
+         child: Text(
+          "Only 15 minutes – no pressure, just value.",
+          style: Theme.of(context).textTheme.bodySmall,
+               ),
+       ),
     ],
   ),
 )
@@ -212,11 +217,11 @@ class BotifyContentDesktop extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildBulletPoint(context, "Place or receive real PSTN calls using your PC & Android phone"),
-                const SizedBox(height: 10),
-                _buildBulletPoint(context, "Or go cloud: integrate with Twilio, Plivo, Vonage, TextNow, and others"),
-                const SizedBox(height: 10),
-                _buildBulletPoint(context, "AI speaks naturally and acts according to your data and instructions"),
+                Semantics(child: _buildBulletPoint(context, "Place or receive real PSTN calls using your PC & Android phone")),
+                const SizedBox(height: ATSizes.spacesBtwTexts),
+                Semantics(child: _buildBulletPoint(context, "Or go cloud: integrate with Twilio, Plivo, Vonage, TextNow, and others")),
+                const SizedBox(height: ATSizes.spacesBtwTexts),
+                Semantics(child: _buildBulletPoint(context, "AI speaks naturally and acts according to your data and instructions")),
               ],
             ),
           ),
@@ -236,7 +241,7 @@ class BotifyContentDesktop extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildBulletPoint(context, "Automatically send and reply to emails."),
-                const SizedBox(height: 10),
+                const SizedBox(height: ATSizes.spacesBtwTexts),
                 _buildBulletPoint(context, "Read your inbox, understand context, and engage with leads."),
                 
               ],
@@ -249,20 +254,13 @@ class BotifyContentDesktop extends StatelessWidget {
   Widget _buildBulletPointsSectionTalkAnywhere(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flexible(
-            flex: 1,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildBulletPoint(context, "Integrate and converse over WhatsApp, SMS, Telegram"),
-                const SizedBox(height: 10),
-                _buildBulletPoint(context, "Manage multiple conversations effortlessly"),
-                
-              ],
-            ),
-          ),
+          Semantics(child: _buildBulletPoint(context, "Integrate and converse over WhatsApp, SMS, Telegram")),
+          const SizedBox(height: ATSizes.spacesBtwTexts),
+          Semantics(child: _buildBulletPoint(context, "Manage multiple conversations effortlessly")),
+          
         ],
       ),
     );
@@ -277,9 +275,9 @@ class BotifyContentDesktop extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildBulletPoint(context, "AI reads your network’s posts."),
-                const SizedBox(height: 10),
-                _buildBulletPoint(context, "It generates, qualifies, and contacts leads using your account."),
+                Semantics(child: _buildBulletPoint(context, "AI reads your network’s posts.")),
+                const SizedBox(height: ATSizes.spacesBtwTexts),
+                Semantics(child: _buildBulletPoint(context, "It generates, qualifies, and contacts leads using your account.")),
                 
               ],
             ),
@@ -298,9 +296,9 @@ class BotifyContentDesktop extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildBulletPoint(context, "Scrape websites."),
+                Semantics(child: _buildBulletPoint(context, "Scrape websites.")),
                 const SizedBox(height: 10),
-                _buildBulletPoint(context, "Automate repetitive workflows like job board submissions."),
+                Semantics(child: _buildBulletPoint(context, "Automate repetitive workflows like job board submissions.")),
                 
               ],
             ),
@@ -319,9 +317,9 @@ class BotifyContentDesktop extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildBulletPoint(context, "Pull from your own data (Google Drive, Notion, CRM, etc.)"),
+                Semantics(child: _buildBulletPoint(context, "Pull from your own data (Google Drive, Notion, CRM, etc.)")),
                 const SizedBox(height: 10),
-                _buildBulletPoint(context, "Deliver context-aware conversations and actions."),
+                Semantics(child: _buildBulletPoint(context, "Deliver context-aware conversations and actions.")),
                 
               ],
             ),
@@ -341,10 +339,12 @@ class BotifyContentDesktop extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Flexible(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.labelMedium,
-             
+            child: Semantics(
+              child: Text(
+                text,
+                style: Theme.of(context).textTheme.labelMedium,
+               
+              ),
             ),
           ),
         ],

@@ -1,3 +1,5 @@
+// import 'package:agentiqthingswebsite/utils/constants/colors.dart';
+// import 'package:agentiqthingswebsite/utils/constants/sizes.dart';
 // import 'package:flutter/material.dart';
 
 // void showRequestDemoForm(BuildContext context) {
@@ -19,8 +21,8 @@
 // class _RequestDemoFormState extends State<RequestDemoForm> {
 //   final _formKey = GlobalKey<FormState>();
 //   final TextEditingController _phoneController = TextEditingController();
-//   bool _isLoading = false; // Loading state variable
-//   bool _isSubmitted = false; // To track if the request was submitted
+//   bool _isLoading = false;
+//   bool _isSubmitted = false; 
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -42,35 +44,33 @@
 //             child: Column(
 //               mainAxisSize: MainAxisSize.min,
 //               children: [
-//                 const Text(
-//                   '"Request a personalized demo today and discover how Agentiq - Things can streamline your customer engagement and drive results."',
-//                   style: TextStyle(
-//                     fontSize: 18,
-//                     fontWeight: FontWeight.normal,
-//                     color: Colors.black,
+//                 Semantics(
+//                   child:  Text(
+//                     '"Request a personalized demo today and discover how Agentiq - Things can streamline your customer engagement and drive results."',
+//                     style: Theme.of(context).textTheme.headlineSmall
 //                   ),
 //                 ),
-//                 const SizedBox(height: 20),
-//                 TextFormField(
-//                   decoration: const InputDecoration(
-//                     labelText: 'Full Name *',
-//                     hintText: 'Enter your full name',
-//                     hintStyle: TextStyle(
-//                       color: Colors.grey,
-//                       fontSize: 12,
-//                     ),
-//                     border: OutlineInputBorder(
-//                       borderRadius: BorderRadius.all(Radius.circular(20)),
-//                     ),
-//                   ),
-//                   validator: (value) {
-//                     if (value == null || value.isEmpty) {
-//                       return 'Please enter your name';
-//                     }
-//                     return null;
-//                   },
-//                 ),
-//                 const SizedBox(height: 10),
+//                  SizedBox(height: ATSizes.spaceBtwInputFields),
+//                 // TextFormField(
+//                 //   decoration: const InputDecoration(
+//                 //     labelText: 'Full Name *',
+//                 //     hintText: 'Enter your full name',
+//                 //     hintStyle: TextStyle(
+//                 //       color: Colors.grey,
+//                 //       fontSize: 12,
+//                 //     ),
+//                 //     border: OutlineInputBorder(
+//                 //       borderRadius: BorderRadius.all(Radius.circular(20)),
+//                 //     ),
+//                 //   ),
+//                 //   validator: (value) {
+//                 //     if (value == null || value.isEmpty) {
+//                 //       return 'Please enter your name';
+//                 //     }
+//                 //     return null;
+//                 //   },
+//                 // ),
+//                 SizedBox(height: ATSizes.spaceBtwInputFields),
 //                 TextFormField(
 //                   decoration: const InputDecoration(
 //                     labelText: 'Company Name (Optional)',
@@ -84,7 +84,7 @@
 //                     ),
 //                   ),
 //                 ),
-//                 const SizedBox(height: 10),
+//                 SizedBox(height: ATSizes.spaceBtwInputFields),
 //                 TextFormField(
 //                   decoration: const InputDecoration(
 //                     labelText: 'Email Address *',
@@ -107,7 +107,7 @@
 //                     return null;
 //                   },
 //                 ),
-//                 const SizedBox(height: 10),
+//                 SizedBox(height: ATSizes.spaceBtwInputFields),
 //                 // Regular Phone Number Input Field
 //                 TextFormField(
 //                   controller: _phoneController,
@@ -136,7 +136,7 @@
 //                     return null;
 //                   },
 //                 ),
-//                 const SizedBox(height: 10),
+//                 SizedBox(height: ATSizes.spaceBtwInputFields),
 //                 DropdownButtonFormField<String>(
 //                   decoration: const InputDecoration(
 //                     labelText: 'How We Can Assist You? *',
@@ -168,7 +168,7 @@
 //                     return null;
 //                   },
 //                 ),
-//                 const SizedBox(height: 10),
+//                  SizedBox(height: ATSizes.spaceBtwInputFields),
 //                 TextFormField(
 //                   maxLines: 4,
 //                   decoration: const InputDecoration(
@@ -179,14 +179,13 @@
 //                     ),
 //                   ),
 //                 ),
-//                 const SizedBox(height: 20),
-//                 // Conditional loading indicator and message
+//                  SizedBox(height: ATSizes.spaceBtwInputFields),
 //                 if (_isLoading)
-//                   const CircularProgressIndicator(
-//                     color: Colors.pinkAccent,
+//                    CircularProgressIndicator(
+//                     color: ATColors.primaryColor,
 //                   )
-//                 else if (_isSubmitted) // Show message only if submitted
-//                   const Text(
+//                 else if (_isSubmitted) 
+//                    Text(
 //                     'Request Received 😊. We will reach you soon 👍...',
 //                     style: TextStyle(fontSize: 20, color: Colors.blueGrey),
 //                   )
@@ -201,37 +200,31 @@
 //                       borderRadius: BorderRadius.circular(20),
 //                     ),
 //                     child: ElevatedButton(
+                      
 //                       style: ElevatedButton.styleFrom(
-//                         foregroundColor: Colors.white,
-//                         backgroundColor: Colors.transparent,
-//                         textStyle: const TextStyle(
-//                           fontSize: 16,
-//                         ),
+                       
 //                         padding: const EdgeInsets.symmetric(horizontal: 20),
-//                         shape: RoundedRectangleBorder(
-//                           borderRadius: BorderRadius.circular(10),
-//                         ),
+                       
 //                       ),
 //                       onPressed: () {
 //                         if (_formKey.currentState!.validate()) {
 //                           setState(() {
-//                             _isLoading = true; // Set loading state
-//                             _isSubmitted = false; // Reset submitted state
+//                             _isLoading = true;
+//                             _isSubmitted = false; 
 //                           });
 
-//                           // Simulate a network call (replace this with your actual logic)
 //                           Future.delayed(const Duration(seconds: 3), () {
-//                             // After the network call, reset loading state
 //                             setState(() {
 //                               _isLoading = false;
-//                               _isSubmitted = true; // Set submitted state
+//                               _isSubmitted = true;
 //                             });
 //                           });
 //                         }
 //                       },
-//                       child: const Text(
+//                       child:  Text(
+                        
 //                         'Submit Request',
-//                         style: TextStyle(fontSize: 16, color: Colors.white),
+//                         style: Theme.of(context).textTheme.bodyMedium,
 //                       ),
 //                     ),
 //                   ),

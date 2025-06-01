@@ -65,28 +65,36 @@ class FrontPageTablet extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildBulletPoint(context,
-                    "Powered by RAG Intelligence - connects your data sources to deliver personalized, AI-driven conversations.", {
-                  "RAG Intelligence": ATColors.primaryColor,
-                }),
+                Semantics(
+                  child: _buildBulletPoint(context,
+                      "Powered by RAG Intelligence - connects your data sources to deliver personalized, AI-driven conversations.", {
+                    "RAG Intelligence": ATColors.primaryColor,
+                  }),
+                ),
                 const SizedBox(height: 15),
-                _buildBulletPoint(context,
-                    "Human-like AI voice Agent-Real PSTN Calls or go with Twilio, Plivo and others", {
-                  "PSTN Calls": ATColors.primaryColor,
-                  "Twilio, Plivo": ATColors.primaryColor,
-                }),
+                Semantics(
+                  child: _buildBulletPoint(context,
+                      "Human-like AI voice Agent-Real PSTN Calls or go with Twilio, Plivo and others", {
+                    "PSTN Calls": ATColors.primaryColor,
+                    "Twilio, Plivo": ATColors.primaryColor,
+                  }),
+                ),
                 const SizedBox(height: 15),
-                _buildBulletPoint(
-                    context,
-                    "Web Scraping + AI Automation-Scrape Websites, Automate repetitive workflows like job board submissions",
-                    {
-                      "Scrape Websites": ATColors.primaryColor,
-                    }),
+                Semantics(
+                  child: _buildBulletPoint(
+                      context,
+                      "Web Scraping + AI Automation-Scrape Websites, Automate repetitive workflows like job board submissions",
+                      {
+                        "Scrape Websites": ATColors.primaryColor,
+                      }),
+                ),
                 const SizedBox(height: 15),
-                _buildBulletPoint(context,
-                    "Talk Anywhere - Integrate and converse over WhatsApp, SMS, Telegram", {
-                  "WhatsApp, SMS, Telegram": ATColors.primaryColor,
-                }),
+                Semantics(
+                  child: _buildBulletPoint(context,
+                      "Talk Anywhere - Integrate and converse over WhatsApp, SMS, Telegram", {
+                    "WhatsApp, SMS, Telegram": ATColors.primaryColor,
+                  }),
+                ),
               ],
             ),
           ),
@@ -134,9 +142,11 @@ class FrontPageTablet extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Flexible(
-            child: Text.rich(
-              TextSpan(children: spans),
-              textAlign: TextAlign.start,
+            child: Semantics(
+              child: Text.rich(
+                TextSpan(children: spans),
+                textAlign: TextAlign.start,
+              ),
             ),
           ),
         ],

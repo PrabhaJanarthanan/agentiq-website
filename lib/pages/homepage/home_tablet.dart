@@ -9,6 +9,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/image_strings.dart';
 import '../../utils/constants/sizes.dart';
+import '../../utils/helpers/helper_functions.dart';
+import '../demo_front/agentiq_lab_widget.dart';
 import '../scrolling_features/content/scrolling_features_content.dart';
 
 class HomePageTablet extends StatefulWidget {
@@ -89,6 +91,7 @@ with SingleTickerProviderStateMixin{
   }
   @override
   Widget build(BuildContext context) {
+     final dark = ATHelperFunctions.isDarkMode(context);
     return Scaffold(
       body: Column(
         children: [
@@ -103,6 +106,7 @@ with SingleTickerProviderStateMixin{
               controller: widget.scrollController,
               child: Column(
                 children: [
+                  AgentiqLabWidgetDesktop(),
                   KeyedSubtree(key:widget.homeKey, child: FrontPageTablet(bulletText: true)),
 
                   SizedBox(height: ATSizes.spaceBtwSections),
@@ -141,7 +145,7 @@ with SingleTickerProviderStateMixin{
                 onPressed: widget.scrollToHome,
                 fillColor: ATColors.primaryColor,
                 
-                child: Icon(Iconsax.arrow_square_up),),
+                child: Icon(Iconsax.arrow_up_2),),
                 ), 
             ),
 
@@ -156,6 +160,7 @@ with SingleTickerProviderStateMixin{
                     CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
                   ),
                   child: FloatingActionButton(onPressed: _openWhatsApp,
+                  backgroundColor: dark ? Colors.transparent : ATColors.white,
                   child: Image.asset(ATImages.whatsApp,
                    width: ATSizes.iconMd,
                   height: ATSizes.iconMd,

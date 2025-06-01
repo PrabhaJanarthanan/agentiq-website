@@ -52,17 +52,25 @@ class _AutoScrollFeaturesTabletState extends State<AutoScrollFeaturesTablet> {
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
-      child: SizedBox(
-        height: 230, 
-        child: ListView.separated(
-          controller: _scrollController,
-          scrollDirection: Axis.horizontal,
-          itemCount: widget.features.length,
-          itemBuilder: (context, index) {
-            return ScrollingFeaturesTablet(feature: widget.features[index]);
-          },
-          separatorBuilder: (context, index) => const SizedBox(width: 24),
-        ),
+      child: Column(
+        children: [
+           Semantics(
+             child: Text('Features',
+             style: Theme.of(context).textTheme.headlineMedium,),
+           ),
+          SizedBox(
+            height: 230, 
+            child: ListView.separated(
+              controller: _scrollController,
+              scrollDirection: Axis.horizontal,
+              itemCount: widget.features.length,
+              itemBuilder: (context, index) {
+                return ScrollingFeaturesTablet(feature: widget.features[index]);
+              },
+              separatorBuilder: (context, index) => const SizedBox(width: 24),
+            ),
+          ),
+        ],
       ),
     );
   }
