@@ -36,18 +36,25 @@ class FooterTablet extends StatelessWidget {
                           const SizedBox(width: 10),
                           Semantics(
                             child: Text(
-                              'Agentiq - Things, Inc.',
-                              style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                              'Agentiq - Things, LLP.',
+                              style: textTheme.titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 12),
-                      Semantics(child: Text('Email: info@agentiq-things.tech', style: textTheme.labelLarge)),
+                      Semantics(
+                          child: Text('Email: support@agentiq-things.tech',
+                              style: textTheme.labelLarge)),
                       const SizedBox(height: 5),
-                      Semantics(child: Text('Phone: +91 9488501457', style: textTheme.labelLarge)),
+                      Semantics(
+                          child: Text('Phone: +91 9488501457',
+                              style: textTheme.labelLarge)),
                       const SizedBox(height: 5),
-                      Semantics(child: Text('Address: 118, Mettur Road, Erode', style: textTheme.labelLarge)),
+                      Semantics(
+                          child: Text('Address: 118, Mettur Road, Erode',
+                              style: textTheme.labelLarge)),
                     ],
                   ),
                 ),
@@ -65,10 +72,14 @@ class FooterTablet extends StatelessWidget {
                       Wrap(
                         spacing: 15,
                         children: [
-                          _socialIcon(Image.asset(ATImages.facebook), 'https://facebook.com'),
-                          _socialIcon(Image.asset(ATImages.instagram), 'https://instagram.com'),
-                          _socialIcon(Image.asset(ATImages.twitter), 'https://twitter.com'),
-                          _socialIcon(Image.asset(ATImages.linkedin), 'https://linkedin.com'),
+                          _socialIcon(Image.asset(ATImages.facebook),
+                              'https://facebook.com'),
+                          _socialIcon(Image.asset(ATImages.instagram),
+                              'https://instagram.com'),
+                          _socialIcon(Image.asset(ATImages.twitter),
+                              'https://twitter.com'),
+                          _socialIcon(Image.asset(ATImages.linkedin),
+                              'https://linkedin.com'),
                         ],
                       ),
                     ],
@@ -88,7 +99,8 @@ class FooterTablet extends StatelessWidget {
                 spacing: 30,
                 children: [
                   _footerLink(context, 'Privacy Policy', '/privacypolicy'),
-                  _footerLink(context, 'Terms & Conditions', '/termsandconditions'),
+                  _footerLink(
+                      context, 'Terms & Conditions', '/termsandconditions'),
                   _footerLink(context, 'Refund Policy', '/returnsrefund'),
                 ],
               ),

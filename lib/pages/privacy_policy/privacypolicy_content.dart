@@ -61,11 +61,10 @@ We may update this Privacy Policy from time to time. We will notify you of any c
 If you have any questions about this Privacy Policy or your data privacy, please contact us at:
 
 Agentiq - Things 
-Email: info@agentiq-things.tech 
+Email: support@agentiq-things.tech 
 Phone: +91 9043249455  
 Address:  
-#118, EVN Road, Municipal Colony,  
-Edayankattuvalasu, Erode,  
+#118, EVN Road, Erode,  
 Tamil Nadu - 638001,  
 India.
 

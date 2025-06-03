@@ -41,11 +41,10 @@ We are committed to delivering high-quality AI Call Bot and WhatsApp Marketing s
 For questions regarding our Refund and Cancellation Policy, please contact us at:
 
 Agentiq - Things  
-#118, EVN Road, Municipal Colony,  
-Edayankattuvalasu, Erode,  
+#118, EVN Road, Erode,  
 Tamil Nadu - 638001, India  
 Mobile: +91 9043249455  
-Email: info@agentiq-things.tech
+Email: support@agentiq-things.tech
 
 Last updated: May 2025
 ''';

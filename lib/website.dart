@@ -1,4 +1,3 @@
-
 import 'package:agentiqthingswebsite/pages/homepage/homepage.dart';
 import 'package:flutter/material.dart';
 
@@ -12,17 +11,16 @@ class Website extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      themeMode: ThemeMode.light,
-      theme: ATWebsiteTheme.lightTheme,
-      title: 'Agentiq-Things',
-      darkTheme: ATWebsiteTheme.darkTheme,
-      getPages: getPages,
-     // initialBinding: GeneralBindings(),
-      debugShowCheckedModeBanner: false,
-      //initialRoute: '/',
-      home: Scaffold(
-        body: HomePage(),
-    ));
-    
+        themeMode: ThemeMode.system,
+        theme: ATWebsiteTheme.lightTheme,
+        title: 'Agentiq-Things',
+        darkTheme: ATWebsiteTheme.darkTheme,
+        getPages: getPages,
+        // initialBinding: GeneralBindings(),
+        debugShowCheckedModeBanner: false,
+        //initialRoute: '/',
+        home: Scaffold(
+          body: HomePage(),
+        ));
   }
 }
