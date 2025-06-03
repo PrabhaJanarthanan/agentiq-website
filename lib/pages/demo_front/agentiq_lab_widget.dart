@@ -32,124 +32,149 @@ class AgentiqLabWidgetDesktop extends StatelessWidget {
                   Expanded(
                       flex: 4,
                       child: TextField(
-                        maxLength: 1000,
+                        maxLength: 2000,
                         maxLines: 20,
                         controller: controller.promptTextController,
                       )),
                   Expanded(
-                      flex: 3,
-                      child: Container(
-                        margin: EdgeInsets.all(20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Row(
-                              spacing: 10,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: AutoSizeText(
-                                      "Select Country",
-                                      minFontSize: 10,
+                    flex: 3,
+                    child: Container(
+                      margin: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            spacing: 10,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                  flex: 1,
+                                  child: AutoSizeText(
+                                    "Select Country",
+                                    minFontSize: 10,
+                                    overflow: TextOverflow.ellipsis,
+                                  )),
+                              Expanded(flex: 2, child: CountryDropDown()),
+                            ],
+                          ),
+                          Row(
+                            spacing: 10,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                  flex: 1,
+                                  child: AutoSizeText("Select Language",
                                       overflow: TextOverflow.ellipsis,
-                                    )),
-                                Expanded(flex: 2, child: CountryDropDown()),
-                              ],
-                            ),
-                            Row(
-                              spacing: 10,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: AutoSizeText("Select Language",
-                                        overflow: TextOverflow.ellipsis,
-                                        minFontSize: 10)),
-                                Expanded(flex: 2, child: LanguageDropDown()),
-                              ],
-                            ),
-                            Row(
-                              spacing: 10,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: AutoSizeText("Select Voice",
-                                        overflow: TextOverflow.ellipsis,
-                                        minFontSize: 10)),
-                                Expanded(flex: 2, child: VoiceDropDown()),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              spacing: 10,
-                              children: [
-                                Expanded(
-                                  flex: 3,
+                                      minFontSize: 10)),
+                              Expanded(flex: 2, child: LanguageDropDown()),
+                            ],
+                          ),
+                          Row(
+                            spacing: 10,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                  flex: 1,
+                                  child: AutoSizeText("Select Voice",
+                                      overflow: TextOverflow.ellipsis,
+                                      minFontSize: 10)),
+                              Expanded(flex: 2, child: VoiceDropDown()),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            spacing: 10,
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: TextField(
+                                  maxLength: 100,
+                                  maxLines: 1,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText:
+                                        "Your EmailId To Test Your Prompt",
+                                  ),
+                                  controller: controller.emailTextController,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: Tooltip(
+                                  message: "ex: 919999999999 with country code",
                                   child: TextField(
-                                    maxLength: 100,
                                     maxLines: 1,
+                                    maxLength: 20,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(),
                                       labelText:
-                                          "Your EmailId To Test Your Prompt",
+                                          "Whatsapp# To Test Your Prompt",
                                     ),
-                                    controller: controller.emailTextController,
+                                    controller:
+                                        controller.whatsappNumberTextController,
                                   ),
                                 ),
-                                Expanded(
-                                  flex: 3,
-                                  child: Tooltip(
-                                    message:
-                                        "ex: 919999999999 with country code",
-                                    child: TextField(
-                                      maxLines: 1,
-                                      maxLength: 20,
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        labelText:
-                                            "Whatsapp# To Test Your Prompt",
-                                      ),
-                                      controller: controller
-                                          .whatsappNumberTextController,
-                                    ),
+                              ),
+                            ],
+                          ),
+                          ElevatedButton(
+                              onPressed: () async {
+                                if (!controller.isWebRtcSession.value) {
+                                  controller.isConnectionInProgress.value =
+                                      true;
+                                  controller.isConnectionInProgress.refresh();
+                                  await controller.connectWebRtc();
+                                  controller.isConnectionInProgress.value =
+                                      false;
+                                  controller.isConnectionInProgress.refresh();
+                                } else {
+                                  controller.isConnectionInProgress.value =
+                                      true;
+                                  controller.isConnectionInProgress.refresh();
+                                  await controller.disconnectWebRtc();
+                                  controller.isConnectionInProgress.value =
+                                      false;
+                                  controller.isConnectionInProgress.refresh();
+                                }
+                              },
+                              child: Stack(
+                                children: [
+                                  Obx(
+                                    () =>
+                                        controller.isConnectionInProgress.value
+                                            ? Center(
+                                                child: SizedBox(
+                                                    width: getWidth(context,
+                                                        percent: 5),
+                                                    child:
+                                                        LinearProgressIndicator()),
+                                              )
+                                            : Obx(
+                                                () => controller
+                                                        .isWebRtcSession.value
+                                                    ? AutoSizeText("End Call",
+                                                        minFontSize: 10)
+                                                    : AutoSizeText(
+                                                        maxLines: 1,
+                                                        minFontSize: 10,
+                                                        "Talk to Agent",
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .labelMedium),
+                                              ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            ElevatedButton(
-                                onPressed: () async {
-                                  if (!controller.isWebRtcSession.value) {
-                                    await controller.connectWebRtc();
-                                  } else {
-                                    await controller.disconnectWebRtc();
-                                  }
-                                },
-                                child: Stack(
-                                  children: [
-                                    Obx(
-                                      () => controller.isWebRtcSession.value
-                                          ? AutoSizeText("End Call",
-                                              minFontSize: 10)
-                                          : AutoSizeText(
-                                              maxLines: 1,
-                                              minFontSize: 10,
-                                              "Talk to Agent",
-                                              overflow: TextOverflow.ellipsis,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .labelMedium),
-                                    ),
-                                    RTCWidget(),
-                                  ],
-                                )
+                                  RTCWidget(),
+                                ],
+                              )
 
-                                // Text("Run")
-                                )
-                          ],
-                        ),
-                      )),
+                              // Text("Run")
+                              )
+                        ],
+                      ),
+                    ),
+                  ),
                   Expanded(
                       flex: 3,
                       child: Obx(() => !controller.isWebRtcSession.value

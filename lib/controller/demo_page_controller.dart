@@ -68,6 +68,7 @@ class MainPageController extends GetxController {
   final RxBool isPromptUpdating = false.obs;
   final RxBool isEmailUpdating = false.obs;
   final RxBool isRecordingPlaying = false.obs;
+  final RxBool isConnectionInProgress = false.obs;
   final audioPlayer = AudioPlayer();
 
   Future<void> connectWebRtc() async {
@@ -290,7 +291,7 @@ class MainPageController extends GetxController {
           print(
               "${entry.key.toString()} ${Map<String, dynamic>.from(entry.value)}}");
         }
-
+        callTranscript.value.clear();
         callTranscript.value = callTranscriptParsed;
         callTranscript.refresh();
         isCallTranscriptAvailable.value = true;
@@ -326,59 +327,21 @@ class MainPageController extends GetxController {
 }
 
 const agentiqPrompt = """Edit this text to match your business process 
-- Dont translate technical words, example, "AI", "automate", "software", "process", "email", etc
-- You have cold called the customer. The customer can be either a business or a professional.
-- You will generate a sales lead for the AI driven Software.
-- You will learn customer's business requirements with relevant questions, 
-  example:"can i work for you as telecaller, recruiter in multiple languages", 
-  "can i generate leads from your linkedin account, emails or databases?",
-  and explain how Botify can help.
-- Company Name: Agentiq-Things LLP
-- Product Name: Botify
-- Description: Botify automates end-to-end business process using AI
-- What is & How does:
-    - Botify can use Android Phones, VoIP/SIP accounts, whatsapp, email accounts, social media accounts, databases, spreadsheets, documents, 3rd party APIs, etc
-    - By using RAG, Fine Tuning and vector embeddings, semantic search, browser automation
-If you are not able to generate relevant answer, inform that support team will connect
-""";
+- You are a voice-based AI sales agent for an AI software product called Botify, built by Agentiq-Things LLP.
+- Your goal is to generate a qualified sales lead by understanding the customer's business needs and proposing how Botify can help.
+- Start the conversation with briefing the product and company and continue by asking what kind of business or work the customer does.
+- Then ask specific, relevant questions to explore opportunities for automation, such as:
 
-/*
-  - What Botify Can do?
-    - Access email accounts,  whatsapp accounts, social media accounts, 3rd Party APIs and communicate thru them, analyze them and generate leads
-    - Scrape any website, automate any web based workflows
-    - Access and analyze databases, excel spreadsheets, perform database operations
-    - Communicate thru Android Mobiles via PSTN Calls, SIP/VoIP, SMS, Whatsapp, etc, Bridge them among Business users both outbound and inbound
-    - Access and manage documents like PDF, Word, Excel, etc for documents like reports, contracts, invoices, resumes etc
-*/
+  • Can we (Botify) help you with outbound calls in multiple languages using SIM-based or VoIP numbers?
+  • Can we act as your virtual recruiter or telecaller to generate or qualify leads?
+  • Can we access your LinkedIn, email, or CRM to find and follow up with leads automatically?
+  • Do you need help automating WhatsApp, email, or SMS communications?
+  • Do you have documents, spreadsheets, or APIs we can connect to and automate?
 
-const agentiqPromptOld = """Edit this text to match your business process 
-You will explain the below company profile and product information based on conversation with customer, 
-If you need example use cases of this product, you can call the tool "get_agentiq_example_use_cases"
-If you are not able to generate relevant answer to a customer query, inform the customer that you are communicating the support team and they will connect soon
-Company: AgentIQ Things LLP
-Product: Botify – Personalized AI Assistants for End-to-End Business Automation
-Core Capabilities:
-    Lead generation from emails, LinkedIn, and web.
-    Automated creation of blogs, infographics, presentations, and docs.
-    AI voice agents for outbound calls via SIM (PSTN), SIP/VoIP, Accounting
-    Ad performance monitoring + strategy suggestions.
-    Browser automation: social media engagement, blog writing, group joining, content scraping with
-     captcha bypassing.
-    AI voice agents for inbound/outbound calls via SIM (PSTN), SIP/VoIP.
-    WhatsApp: bulk messaging + interactive chat for product education.
-    AI-powered customer support assistant (FAQs, onboarding, retention).
-    Document/image/contract analysis (legitimacy, clauses, compliance).
-    Compliance watchdog: monitor regulatory changes, suggest low-cost adherence.
-    Server/software ops: read logs, optimize cloud costs (e.g., suggest preemptible VMs & auto-restart them).
-    CRM integration or AI-as-CRM.
-Tech Stack:
-    RAG, fine-tuning, vector embeddings, semantic search.
-    API, SDK, cloud system integrations.
-    Cloud/on-prem AI deployment.
-    Communication via email, SMS, WhatsApp, voice in 200+ languages.
-    Full browser + UI automation.
-Any Specific Requirements:
-    Based on requirements, a simple 4 GB RAM PC or a Pi-Zero may be required
-Extensions:
-    Based on the requirements, the features can be extended
+- Listen carefully to the customer’s answers, identify what tasks are repetitive, time-consuming, or communication-heavy, and explain how Botify can automate those.
+
+- Product Summary:
+    - Botify automates complete business workflows using AI.
+    - It connects with Android Phones, VoIP/SIP numbers, WhatsApp, email, social media, documents, spreadsheets, databases, and APIs.
+    - It uses Retrieval-Augmented Generation (RAG), semantic search, fine-tuned LLMs, and browser automation to perform smart, context-aware actions.
 """;

@@ -59,41 +59,46 @@ class CallVerdictWidget extends StatelessWidget {
         border: Border.all(color: Colors.grey.shade400),
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
-      child: Column(
+      child: Row(
         spacing: 8,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextField(
-            maxLines: 3,
-            readOnly: true,
-            controller:
-                TextEditingController(text: controller.callVerdict.value),
+          Expanded(
+            flex: 4,
+            child: TextField(
+              maxLines: 3,
+              readOnly: true,
+              controller:
+                  TextEditingController(text: controller.callVerdict.value),
+            ),
           ),
           Obx(
             () => controller.isCallRecordingAvailable.value
-                ? Align(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton.filled(
-                      tooltip: "Play/Pause Call Recording",
-                      onPressed: () async {
-                        if (controller.isRecordingPlaying.value) {
-                          controller.isRecordingPlaying.value = false;
-                          controller.isRecordingPlaying.refresh();
-                          await controller.stopPlayingCallRecording();
-                        } else {
-                          controller.isRecordingPlaying.value = true;
-                          controller.isRecordingPlaying.refresh();
-                          await controller.playCallRecording();
-                        }
-                      },
-                      icon: Obx(() => controller.isRecordingPlaying.value
-                          ? Icon(Icons.pause)
-                          : Icon(Icons.play_arrow)),
-                      style: IconButton.styleFrom(
-                        backgroundColor: Colors.deepPurple.shade100,
-                        foregroundColor: Colors.deepPurple,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                ? Expanded(
+                    flex: 1,
+                    child: Center(
+                      child: IconButton.filled(
+                        tooltip: "Play/Pause Call Recording",
+                        onPressed: () async {
+                          if (controller.isRecordingPlaying.value) {
+                            controller.isRecordingPlaying.value = false;
+                            controller.isRecordingPlaying.refresh();
+                            await controller.stopPlayingCallRecording();
+                          } else {
+                            controller.isRecordingPlaying.value = true;
+                            controller.isRecordingPlaying.refresh();
+                            await controller.playCallRecording();
+                          }
+                        },
+                        icon: Obx(() => controller.isRecordingPlaying.value
+                            ? Icon(Icons.pause)
+                            : Icon(Icons.play_arrow)),
+                        style: IconButton.styleFrom(
+                          backgroundColor: Colors.deepPurple.shade100,
+                          foregroundColor: Colors.deepPurple,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
                       ),
                     ),
@@ -105,44 +110,6 @@ class CallVerdictWidget extends StatelessWidget {
     );
   }
 }
-
-/*
-class CallVerdictWidget extends StatelessWidget {
-  CallVerdictWidget({super.key});
-  final controller = Get.find<MainPageController>();
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade400),
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      child: ListTile(
-        title: AutoSizeText(controller.callVerdict.value, minFontSize: 10),
-        subtitle: Obx(
-          () => !controller.isCallRecordingAvailable.value
-              ? Container()
-              : IconButton.filled(
-                  tooltip: "Play/Pause Call Recording",
-                  onPressed: () async {
-                    if (controller.isRecordingPlaying.value) {
-                      controller.isRecordingPlaying.value = false;
-                      controller.isRecordingPlaying.refresh();
-                      await controller.stopPlayingCallRecording();
-                    } else {
-                      controller.isRecordingPlaying.value = true;
-                      controller.isRecordingPlaying.refresh();
-                      await controller.playCallRecording();
-                    }
-                  },
-                  icon: Obx(() => controller.isRecordingPlaying.value
-                      ? Icon(Icons.pause)
-                      : Icon(Icons.play_arrow))),
-        ),
-      ),
-    );
-  }
-}
-*/
 
 class CallInstructionsWidget extends StatelessWidget {
   const CallInstructionsWidget({super.key});
