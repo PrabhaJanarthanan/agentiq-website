@@ -8,7 +8,7 @@ import 'package:just_audio/just_audio.dart';
 
 import '../pages/demo_front/language_voices.dart';
 
-const serverUrl = "https://2604-13-60-50-79.ngrok-free.app";
+const serverUrl = "https://96a4-13-60-50-79.ngrok-free.app";
 const baseUrl = "$serverUrl/api/";
 
 class MainPageController extends GetxController {
