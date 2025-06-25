@@ -73,50 +73,70 @@ class MainPageController extends GetxController {
   final audioPlayer = AudioPlayer();
 
   Future<void> connectWebRtc() async {
-    if (!isWebRtcSession.value) {
-      if (!emailTextController.text.isEmail ||
-          !whatsappNumberTextController.text.isNumericOnly) {
-        Get.defaultDialog(
-            title: "Error",
-            content: Text("Please enter valid email or phone number"));
-        return;
+    isConnectionInProgress.value = true;
+    isConnectionInProgress.refresh();
+    try {
+      if (!isWebRtcSession.value) {
+        if (!emailTextController.text.isEmail ||
+            !whatsappNumberTextController.text.isNumericOnly) {
+          Get.defaultDialog(
+              title: "Error",
+              content: Text("Please enter valid email or phone number"));
+          return;
+        }
+
+        isVerdictAvailable.value = false;
+        isVerdictAvailable.refresh();
+        callVerdict.value = "";
+        callVerdict.refresh();
+
+        token = DateTime.now().toIso8601String();
+        webRtcClient = WebRTCClient(
+          signalingUrl: signalingUrl,
+          token: token,
+          data: {
+            "token": token,
+            "email": emailTextController.text,
+            "whatsapp_num":
+                "${selectedCountryCode.value}${whatsappNumberTextController.text}",
+            "prompt": promptTextController.text.replaceAll(
+                "Edit this text to match your business process", ""),
+            "language": selectedLnCode.value,
+            "voice": selectedVoice.value
+          },
+          onDisconnected: () async {
+            await disconnectWebRtc();
+          },
+        );
+        await webRtcClient?.connect();
+        isWebRtcSession.value = true;
+        isWebRtcSession.refresh();
       }
-
-      isVerdictAvailable.value = false;
-      isVerdictAvailable.refresh();
-      callVerdict.value = "";
-      callVerdict.refresh();
-
-      token = DateTime.now().toIso8601String();
-      webRtcClient = WebRTCClient(
-        signalingUrl: signalingUrl,
-        token: token,
-        data: {
-          "token": token,
-          "email": emailTextController.text,
-          "whatsapp_num":
-              "${selectedCountryCode.value}${whatsappNumberTextController.text}",
-          "prompt": promptTextController.text
-              .replaceAll("Edit this text to match your business process", ""),
-          "language": selectedLnCode.value,
-          "voice": selectedVoice.value
-        },
-      );
-      await webRtcClient?.connect();
-      isWebRtcSession.value = true;
-      isWebRtcSession.refresh();
+    } catch (e) {
+      print("Error connecting WebRTC: $e");
     }
+
+    isConnectionInProgress.value = false;
+    isConnectionInProgress.refresh();
   }
 
   Future<void> disconnectWebRtc() async {
-    if (isWebRtcSession.value) {
-      await webRtcClient?.dispose();
-      isWebRtcSession.value = false;
-      isWebRtcSession.refresh();
-      if (token != null) {
-        startCallResultsMonitor(token!);
+    isConnectionInProgress.value = true;
+    isConnectionInProgress.refresh();
+    try {
+      if (isWebRtcSession.value) {
+        await webRtcClient?.dispose();
+        isWebRtcSession.value = false;
+        isWebRtcSession.refresh();
+        if (token != null) {
+          startCallResultsMonitor(token!);
+        }
       }
+    } catch (e) {
+      print("Error disconnecting WebRTC: $e");
     }
+    isConnectionInProgress.value = false;
+    isConnectionInProgress.refresh();
   }
 
   Future<void> updateWpNum() async {

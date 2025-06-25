@@ -6,7 +6,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "39a6342cde90b92071b9099b472268f716e860e1"
+      resolved-ref: b9ddc552ac1ceedee2b0c4e3be32afe0a1a2e89c
       url: "https://github.com/rajajanarthanan/agentiq.git"
     source: git
     version: "0.0.1"

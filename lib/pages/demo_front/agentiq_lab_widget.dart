@@ -177,25 +177,9 @@ class AgentiqLabWidgetDesktop extends StatelessWidget {
                                         onPressed: () async {
                                           if (!controller
                                               .isWebRtcSession.value) {
-                                            controller.isConnectionInProgress
-                                                .value = true;
-                                            controller.isConnectionInProgress
-                                                .refresh();
                                             await controller.connectWebRtc();
-                                            controller.isConnectionInProgress
-                                                .value = false;
-                                            controller.isConnectionInProgress
-                                                .refresh();
                                           } else {
-                                            controller.isConnectionInProgress
-                                                .value = true;
-                                            controller.isConnectionInProgress
-                                                .refresh();
                                             await controller.disconnectWebRtc();
-                                            controller.isConnectionInProgress
-                                                .value = false;
-                                            controller.isConnectionInProgress
-                                                .refresh();
                                           }
                                         },
                                         child: Stack(
