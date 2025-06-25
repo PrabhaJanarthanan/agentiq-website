@@ -10,7 +10,7 @@ class FrontPageDesktop extends StatefulWidget {
 }
 
 class _FrontPageDesktopState extends State<FrontPageDesktop>
-with TickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   // ignore: unused_field
   late Animation<double> _textAnimation;
@@ -18,9 +18,10 @@ with TickerProviderStateMixin {
   bool showText = false;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    _controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
 
     _textAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
       CurvedAnimation(
@@ -38,7 +39,7 @@ with TickerProviderStateMixin {
     });
   }
 
-  @override 
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -52,29 +53,25 @@ with TickerProviderStateMixin {
         children: [
           Center(
             child: Semantics(
-              label: 'Botify AI slogan: Botify - AI That Gets Things Done in 24 Hours',
+              label: 'Botify AI : Automates your Desk in 24 Hours',
               header: true,
-              child: Text(
-                '“Botify - AI That Gets Things Done in 24 Hours”',
-                style: Theme.of(context).textTheme.headlineMedium
-              ),
+              child: Text('“Botify - Get your Desk Automated in 24 Hours”',
+                  style: Theme.of(context).textTheme.headlineMedium),
             ),
-
           ),
           SizedBox(height: ATSizes.spaceBtwSections),
           AnimatedOpacity(
-            opacity: showText ? 1.0 : 0.0, 
+            opacity: showText ? 1.0 : 0.0,
             duration: Duration(milliseconds: 300),
             child: Semantics(
               label: "Botify product description",
               child: Text(
-                 "Botify Anyone Work is your personal AI-powered assistant tailored to automate your communication and outreach needs—calls, emails, messaging, and more—all from a basic PC + Android phone setup.",
-                 style: Theme.of(context).textTheme.headlineSmall,
-                 textAlign: TextAlign.center,
+                "Botify Anyone Work is your personal AI-powered assistant tailored to automate your communication and outreach needs—calls, emails, messaging, and more—all from a basic PC + Android phone setup.",
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
               ),
             ),
           ),
-
         ],
       ),
     );

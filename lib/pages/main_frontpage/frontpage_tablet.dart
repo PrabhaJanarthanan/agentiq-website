@@ -16,10 +16,10 @@ class FrontPageTablet extends StatelessWidget {
         children: [
           Center(
             child: Semantics(
-              label: 'Botify AI slogan: Botify - AI That Gets Things Done in 24 Hours',
+              label: 'Botify AI : Automates your Desk in 24 Hours',
               header: true,
               child: Text(
-                '“Botify - AI That Gets Things Done in 24 Hours”',
+                '“Botify - Get your Desk Automated in 24 Hours”',
                 style: Theme.of(context).textTheme.headlineLarge,
                 textAlign: TextAlign.center,
               ),
@@ -30,25 +30,28 @@ class FrontPageTablet extends StatelessWidget {
             label: "Botify product description",
             child: Text(
               "Botify Anyone Work is your personal AI-powered assistant tailored to automate your communication and outreach needs—calls, emails, messaging, and more—all from a basic PC + Android phone setup.",
-              style: Theme.of(context).textTheme.labelMedium?.copyWith(height: 1.5),
+              style: Theme.of(context)
+                  .textTheme
+                  .labelMedium
+                  ?.copyWith(height: 1.5),
               textAlign: TextAlign.start,
             ),
           ),
           const SizedBox(height: ATSizes.spaceBtwItems),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.all(ATSizes.defaultSpace / 3),
-                child: Text(
-                  "Book a Demo",
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: ATSizes.spaceBtwItems),
+          // Align(
+          //   alignment: Alignment.centerLeft,
+          //   child: ElevatedButton(
+          //     onPressed: () {},
+          //     child: Padding(
+          //       padding: const EdgeInsets.all(ATSizes.defaultSpace / 3),
+          //       child: Text(
+          //         "Book a Demo",
+          //         style: Theme.of(context).textTheme.labelMedium,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // const SizedBox(height: ATSizes.spaceBtwItems),
           if (bulletText) _buildBulletText(context),
         ],
       ),
@@ -66,18 +69,22 @@ class FrontPageTablet extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Semantics(
-                  child: _buildBulletPoint(context,
-                      "Powered by RAG Intelligence - connects your data sources to deliver personalized, AI-driven conversations.", {
-                    "RAG Intelligence": ATColors.primaryColor,
-                  }),
+                  child: _buildBulletPoint(
+                      context,
+                      "Powered by RAG Intelligence - connects your data sources to deliver personalized, AI-driven conversations.",
+                      {
+                        "RAG Intelligence": ATColors.primaryColor,
+                      }),
                 ),
                 const SizedBox(height: 15),
                 Semantics(
-                  child: _buildBulletPoint(context,
-                      "Human-like AI voice Agent-Real PSTN Calls or go with Twilio, Plivo and others", {
-                    "PSTN Calls": ATColors.primaryColor,
-                    "Twilio, Plivo": ATColors.primaryColor,
-                  }),
+                  child: _buildBulletPoint(
+                      context,
+                      "Human-like AI voice Agent-Real PSTN Calls or go with Twilio, Plivo and others",
+                      {
+                        "PSTN Calls": ATColors.primaryColor,
+                        "Twilio, Plivo": ATColors.primaryColor,
+                      }),
                 ),
                 const SizedBox(height: 15),
                 Semantics(
@@ -90,10 +97,12 @@ class FrontPageTablet extends StatelessWidget {
                 ),
                 const SizedBox(height: 15),
                 Semantics(
-                  child: _buildBulletPoint(context,
-                      "Talk Anywhere - Integrate and converse over WhatsApp, SMS, Telegram", {
-                    "WhatsApp, SMS, Telegram": ATColors.primaryColor,
-                  }),
+                  child: _buildBulletPoint(
+                      context,
+                      "Talk Anywhere - Integrate and converse over WhatsApp, SMS, Telegram",
+                      {
+                        "WhatsApp, SMS, Telegram": ATColors.primaryColor,
+                      }),
                 ),
               ],
             ),
@@ -103,7 +112,8 @@ class FrontPageTablet extends StatelessWidget {
     );
   }
 
-  Widget _buildBulletPoint(BuildContext context, String fullText, Map<String, Color> coloredWords) {
+  Widget _buildBulletPoint(
+      BuildContext context, String fullText, Map<String, Color> coloredWords) {
     List<TextSpan> spans = [];
     String remaining = fullText;
 
@@ -118,7 +128,8 @@ class FrontPageTablet extends StatelessWidget {
         }
         spans.add(TextSpan(
           text: word,
-          style: Theme.of(context).textTheme.labelMedium?.copyWith(color: color),
+          style:
+              Theme.of(context).textTheme.labelMedium?.copyWith(color: color),
         ));
         remaining = remaining.substring(index + word.length);
       }

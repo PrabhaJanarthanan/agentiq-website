@@ -50,6 +50,7 @@ class MainPageController extends GetxController {
   final emailTextController = TextEditingController();
   final whatsappNumberTextController = TextEditingController();
   final promptTextController = TextEditingController();
+  final RxString selectedCountryCode = "91".obs;
   String? token;
   WebRTCClient? webRtcClient;
   bool isWebRtcClientDisconnected = false;
@@ -93,7 +94,8 @@ class MainPageController extends GetxController {
         data: {
           "token": token,
           "email": emailTextController.text,
-          "whatsapp_num": whatsappNumberTextController.text,
+          "whatsapp_num":
+              "${selectedCountryCode.value}${whatsappNumberTextController.text}",
           "prompt": promptTextController.text
               .replaceAll("Edit this text to match your business process", ""),
           "language": selectedLnCode.value,

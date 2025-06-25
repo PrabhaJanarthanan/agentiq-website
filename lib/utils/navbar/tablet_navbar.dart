@@ -5,11 +5,16 @@ import 'package:universal_html/html.dart' as html;
 import '../constants/sizes.dart';
 
 class TabletNavbar extends StatefulWidget {
-    final VoidCallback scrollToHome;
+  final VoidCallback scrollToHome;
   final VoidCallback scrollToContact;
   final VoidCallback scrollToFeatures;
   final Function(int) onNavItemTap;
-  const TabletNavbar({super.key, required this.scrollToHome, required this.scrollToContact, required this.scrollToFeatures, required this.onNavItemTap});
+  const TabletNavbar(
+      {super.key,
+      required this.scrollToHome,
+      required this.scrollToContact,
+      required this.scrollToFeatures,
+      required this.onNavItemTap});
 
   @override
   State<TabletNavbar> createState() => _TabletNavbarState();
@@ -31,14 +36,14 @@ class _TabletNavbarState extends State<TabletNavbar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               navLogo(context),
-    
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Demo',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ),
+
+              // ElevatedButton(
+              //   onPressed: () {},
+              //   child: Text(
+              //     'Demo',
+              //     style: Theme.of(context).textTheme.bodyMedium,
+              //   ),
+              // ),
             ],
           ),
           const SizedBox(height: 12),
@@ -46,8 +51,13 @@ class _TabletNavbarState extends State<TabletNavbar> {
           Wrap(
             spacing: 24,
             children: [
-              _navItem('Home', widget.scrollToHome, 'home', 0, ),
-              _navItem('Features', widget.scrollToFeatures,'features', 1),
+              _navItem(
+                'Home',
+                widget.scrollToHome,
+                'home',
+                0,
+              ),
+              _navItem('Features', widget.scrollToFeatures, 'features', 1),
               _navItem('Contact', widget.scrollToContact, 'contact', 2),
               _navItem('About', widget.scrollToHome, 'home', 0),
             ],
@@ -57,7 +67,8 @@ class _TabletNavbarState extends State<TabletNavbar> {
     );
   }
 
-  Widget _navItem(String title, VoidCallback scrollFunction, String path, int index) {
+  Widget _navItem(
+      String title, VoidCallback scrollFunction, String path, int index) {
     return InkWell(
       onTap: () {
         if (html.window.location.pathname != '/$path') {
@@ -72,7 +83,7 @@ class _TabletNavbarState extends State<TabletNavbar> {
         // } else if (index == 2) {
         //   Get.toNamed('/contact');
         // }
-        widget.onNavItemTap(index); 
+        widget.onNavItemTap(index);
       },
       mouseCursor: SystemMouseCursors.click,
       child: Semantics(
